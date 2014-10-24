@@ -20,7 +20,7 @@ if ($pathPage == "error.php") {
     
     echo $buffer;
 } 
-
+ 
 else {
     require_once '../layout/header.php';
     require_once '../layout/nav.php';
