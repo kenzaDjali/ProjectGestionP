@@ -10,11 +10,11 @@
 - Vagrant
 
 ### Commande d'installation
-1  En lance la commande de git clone.
-2  Monter la machine virtuel "installer vagrant": "vagrant up"
-3  Se connecter sur la machine virtuel: "vagrant ssh"
-4  Se dépalcer sur le répértoire de travail : "cd /var/www/project"
-5  Lancer la commande de mise à jour  du composer: "sudo composer self-update"
-6  Lancer la commande  mise à jour de bower : "sudo npm update -g bower"
-7  Lancer la commande d'installation de bower : "bower install" 
-8  Lancer la commande d'installation de composer: "composer install" (les dépendences de php)
+- Lancer la commande de git clone:" git clone --branche nom_version_ou_tag  lien_du_git ./ "
+- Monter la machine virtuel "installer vagrant": "vagrant up"
+- Se connecter sur la machine virtuel: "vagrant ssh"
+- Se dépalcer sur le répértoire de travail : "cd /var/www/project"
+- Lancer la commande de mise à jour  du composer: "sudo composer self-update"
+- Lancer la commande  mise à jour de bower : "sudo npm update -g bower"
+- Lancer la commande d'installation de bower : "bower install" 
+- Lancer la commande d'installation de composer: "composer install" (les dépendences de php)
