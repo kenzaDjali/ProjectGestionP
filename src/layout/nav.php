@@ -42,10 +42,10 @@
             <div class="subnavbar-inner">
                 <div class="container">
                     <ul class="mainnav">
-                        <li class="active"><a href="index.html"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
+                        <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
                         <li><a href="calender.html"><i class="icon-calendar"></i><span>Calendrier</span> </a> </li>
-                        <li><a href="guidely.html"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
-                        <li><a href="shortcodes.html"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
+                        <li><a href="form_ajout_apprenant.php"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
+                        <li><a href="form_ajout_session.php"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
                         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="login.html">Login</a></li>
@@ -59,4 +59,3 @@
             </div>
             <!-- /subnavbar-inner --> 
         </div>
-
