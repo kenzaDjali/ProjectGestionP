@@ -3,6 +3,7 @@
 
 //require '../functions/auth.php';
 $title = "Login";
+$modif="";
 ?>
         <?php 
             if (isset($_SESSION['auth'])){
