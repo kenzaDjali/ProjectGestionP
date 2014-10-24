@@ -1,6 +1,6 @@
 <?php echo"Gestion de présence ";
 
-<?php
+
 //require '../functions/auth.php';
 $title = "Login";
 ?>
