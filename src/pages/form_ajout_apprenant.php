@@ -1,6 +1,6 @@
 <?php 
-    require_once '../src/layout/header.php';
-    require_once '../src/layout/nav.php';
+    require_once '../layout/header.php';
+    require_once '../layout/nav.php';
     
     if (isset($_POST['submit']) && $_POST['submit'] == "register"){
         var_dump($_POST);
@@ -72,5 +72,5 @@
         </div>
         <!-- /container -->
 
-<?php require_once '../src/layout/footer.php';?>
+<?php require_once '../layout/footer.php';?>
 
