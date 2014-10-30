@@ -2,10 +2,13 @@
         <!-- Le javascript
         ================================================== --> 
         <!-- Placed at the end of the document so the pages load faster --> 
-        <script src="js/jquery-1.7.2.min.js"></script> 
+        
+        <script src="assets/jquery/dist/jquery.min.js"></script> 
+        <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>        
         <script src="js/excanvas.min.js"></script> 
         <script src="js/chart.min.js" type="text/javascript"></script> 
-        <script src="js/bootstrap.js"></script>
+        
         <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
          
         <script src="js/base.js"></script> 
@@ -32,7 +35,7 @@
         
                 }
         
-                var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
+                //var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
         
                 var barChartData = {
                     labels: ["January", "February", "March", "April", "May", "June", "July"],
