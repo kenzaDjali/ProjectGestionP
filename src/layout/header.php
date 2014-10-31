@@ -9,9 +9,14 @@
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
                 rel="stylesheet">
+           
         <link href="css/font-awesome.css" rel="stylesheet">
+        <link href ="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">    
         <link href="css/style.css" rel="stylesheet">
         <link href="css/pages/dashboard.css" rel="stylesheet">
+        
+        <!-- pour form_profil -->
+        <link href="css/pages/profil.css" rel="stylesheet">
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
