@@ -41,8 +41,8 @@ body {
 	margin: 0; 
 	padding: 0; 
 	list-style: none;
-    border-bottom: 1px solid #00BA8B;
-	border-top: 1px solid #00BA8B;
+    border-bottom: 1px solid #08254F;
+	border-top: 1px solid #08254F;
 	position: center;
 }
 
@@ -57,7 +57,7 @@ body {
 	float: left;}
 
 .navigation li.active a {
-	background: #00BA8B; 
+	background: #08254F; 
 	color: #fff;}
 
 .user-info-block .user-body {

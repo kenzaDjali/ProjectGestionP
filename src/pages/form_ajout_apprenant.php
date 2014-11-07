@@ -41,7 +41,7 @@
                     
                     <!-- Text input-->
                     <div class="control-group">
-                        <label class="control-label" for="cell_phone_number">Numéro de téléphone portable</label>
+                        <label class="control-label" for="cell_phone_number">Numéro de portable</label>
                         <div class="controls">
                             <input id="cell_phone_number" name="cell_phone_number" type="text" placeholder="Entrez un numéro de téléphone portable" class="input-xlarge">
                         </div>
