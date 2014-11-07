@@ -9,6 +9,14 @@
         <script src="js/excanvas.min.js"></script> 
         <script src="js/chart.min.js" type="text/javascript"></script> 
         
+        <!-- Tooltip Boostrap -->
+        <script language="javascript" type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
+        
+        <!-- DataTables pour formateur -->
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script>
+        <!--  Fichier pour formateur -->
+        <script language="javascript" type="text/javascript" src="js/pages/formateur.js"></script>
+        
         <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
          
         <script src="js/base.js"></script> 

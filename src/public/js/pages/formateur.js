@@ -1,20 +1,19 @@
-$(function () {
-    /* BOOTSNIPP FULLSCREEN FIX */
-    if (window.location == window.parent.location) {
-        $('#back-to-bootsnipp').removeClass('hide');
-    }
-    
-    
+$(function() {
+	
+	// chargement de la datatable
+    $('#table_id').DataTable({
+        //"paging": false,
+    	//"ordering": false,
+    	//"info": false
+    });
+	
     $('[data-toggle="tooltip"]').tooltip();
     
-    $('#fullscreen').on('click', function(event) {
+    $('a[href="#to-do"]').on('click', function(event) {
         event.preventDefault();
-        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
+        alert('Fenêtre d\'ajout d\'aprpenant à faire !');
+        //$('#to-do').modal('show');
     });
-    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
-        event.preventDefault();
-        $('#cant-do-all-the-work-for-you').modal('show');
-    })
     
     $('[data-command="toggle-search"]').on('click', function(event) {
         event.preventDefault();
@@ -25,7 +24,7 @@ $(function () {
         }else{   
             $('.c-search').closest('.row').slideDown(100);
         }
-    })
+    });
     
     $('#contact-list').searchable({
         searchField: '#contact-list-search',
@@ -37,5 +36,20 @@ $(function () {
         hide: function( elem ) {
             elem.slideUp( 100 );
         }
-    })
+    });
+    
+    $('button').on('click', function(){
+    	var value = $(this).val();
+    	alert(value);
+    	// switch suivant les valeurs des boutons
+    	
+    	// value = sessionn : choix d'une session -> affichage des apprenants de la session choisie;
+    	
+    	// value = choix : acceptation ou refus des apprenants en retard et notification à la secrétaire
+    	
+    	// value = apprenantn : arrivée d'un apprenant -> modification de son statut en BD et sur la page;
+    	
+    	// value = ajoutApprenants : pour ajouter des apprenants
+    });
+    
 });
