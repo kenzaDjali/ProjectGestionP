@@ -1,15 +1,16 @@
 <?php
 if (empty($_GET)) {
-    $pathPage = '../pages/accueil.php';
-    $title = "Accueil";
+    $pathPage = '../pages/test.php';
+    $title = "Login";
 } else {
-    $pathPage = '../pages/' . $_GET['page'];
+    $pathPage = '../pages/' . $_GET['page'].'.php';
     $title = ucfirst($_GET['page']);
     if (! file_exists($pathPage)) {
         http_response_code(404); // le robot comprend qu'il y a une erreur
         $pathPage = 'error.php';
     }
-    $active = "?page=" . $_GET['page'];
+    $active = "?page=" . $_GET['page'].'.php';
+    
 }
 
 ob_start();
@@ -21,6 +22,9 @@ if ($pathPage == "error.php") {
     echo $buffer;
 } 
  
+elseif($pathPage =="../pages/test.php"){
+     echo $buffer;
+}
 else {
     require_once '../layout/header.php';
     require_once '../layout/nav.php';
