@@ -2,7 +2,7 @@
 ?>
         <div class="container">
             <div class="row" id="liste_session">
-                <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+                <div class="col-xs-12 col-sm-offset-1 col-sm-10">
                     <h2>Liste des sessions</h2>
                     <table id="table_id" class="display">
                         <thead>
@@ -40,27 +40,24 @@
             
             <!--   faire une div liste_apprenants englobante ? -->
             <div class="row">
-                <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+                <div class="col-xs-12 col-sm-offset-1 col-sm-10">
                     <h2>Liste des apprenants</h2>
                     <h4>Session 1</h4>
-                    <div class="col-xs-12 col-sm-8">
-                        <div class="radio">
-                            <label><input type="radio" name="choix" value="1" checked>J'accepte les retardataires</label><br>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8">
+                            <label class="radio"><input type="radio" name="choix" value="1" checked>J'accepte les retardataires</label>
+                            <label class="radio"><input type="radio" name="choix" value="0">Je n'accepte pas les retardataires</label>
                         </div>
-                        <div class="radio">
-                            <label><input type="radio" name="choix" value="0">Je n'accepte pas les retardataires</label>
+                        <div class="col-xs-12 col-sm-4">
+                            <button type="button" class="btn btn-primary" value="choix">Valider</button>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <button type="button" class="btn btn-primary" value="choix">Valider</button>
-                    </div>
+                    </div>                    
                 </div>  
             </div><br>
   
             <div class="row">
-                <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading c-list">
+                <div class="col-xs-12 col-sm-offset-1 col-sm-10 panel panel-default">
+                        <div class="row panel-heading c-list">
                             <span class="title">Apprenants</span>
                             <ul class="pull-right c-controls">
                                 <li><a href="#to-do" data-toggle="tooltip" data-placement="top" title="Ajout Apprenant"><i class="glyphicon glyphicon-plus"></i></a></li>
@@ -69,7 +66,7 @@
                         </div>
                         
                         <div class="row" style="display: none;">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 col-sm-12">
                                 <div class="input-group c-search">
                                     <input type="text" class="form-control" id="contact-list-search">
                                     <span class="input-group-btn">
@@ -79,46 +76,78 @@
                             </div>
                         </div>
                         
-                        <ul class="list-group" id="contact-list">
-                            <li class="list-group-item">
-                                <div class="col-xs-12 col-sm-3">
-                                    <img src="img/pages/formateur/profil.png" alt="Scott Stevens" class="img-responsive img-circle" />
-                                </div>
-                                <div class="col-xs-12 col-sm-9">
-                                    <span class="name">Prénom1 Nom1</span><br/>
-                                    <span class="glyphicon glyphicon glyphicon-ok text-muted c-info" data-toggle="tooltip" title="Présent"></span>
-                                    <span class="visible-xs"> <span class="text-muted">Présent</span><br/></span>
-                                    <span class="glyphicon glyphicon-time text-muted c-info" data-toggle="tooltip" title="En retard"></span>
-                                    <span class="visible-xs"> <span class="text-muted">En retard</span><br/></span>
-                                    <span class="glyphicon glyphicon-remove text-muted c-info" data-toggle="tooltip" title="Absent"></span>
-                                    <span class="visible-xs"> <span class="text-muted">Absent</span><br/></span>
-                                    <button type="button" class="btn btn-primary" value="apprenant1">Arrivé(e)</button>
+                        <ul class="row list-group" id="contact-list">
+                            <li class="col-xs-12 col-sm-12 list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3">
+                                        <img src="img/pages/formateur/profil.png" alt="Scott Stevens" class="img-responsive img-circle" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <div class="row">
+                                            <!-- <div class="col-xs-12 col-sm-8"> -->
+                                                <span class="name">Prénom1 Nom1</span>
+                                            <!-- </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-8">
+                                                <span class="glyphicon glyphicon-question-sign text-muted c-info" data-toggle="tooltip" title="En attente"></span>
+                                                <span class="visible-xs"> <span class="text-muted">En attente</span><br/></span>                                            
+                                                <span class="glyphicon glyphicon glyphicon-ok text-muted c-info" data-toggle="tooltip" title="Présent"></span>
+                                                <span class="visible-xs"> <span class="text-muted">Présent</span><br/></span>
+                                                <span class="glyphicon glyphicon-time text-muted c-info" data-toggle="tooltip" title="En retard"></span>
+                                                <span class="visible-xs"> <span class="text-muted">En retard</span><br/></span>
+                                                <span class="glyphicon glyphicon-remove text-muted c-info" data-toggle="tooltip" title="Absent"></span>
+                                                <span class="visible-xs"> <span class="text-muted">Absent</span><br/></span>
+                                           </div>
+                                           <div class="col-xs-12 col-sm-4">
+                                                <button type="button" class="btn btn-primary" value="apprenant1">Arrivé(e)</button>
+                                           </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
-                            <li class="list-group-item">
-                                <div class="col-xs-12 col-sm-3">
-                                    <img src="img/pages/formateur/profil.png" alt="Seth Frazier" class="img-responsive img-circle" />
-                                </div>
-                                <div class="col-xs-12 col-sm-9">
-                                    <span class="name">Prénom2 Nom2</span><br/>
-                                    <span class="glyphicon glyphicon glyphicon-ok text-muted c-info" data-toggle="tooltip" title="Présent"></span>
-                                    <span class="visible-xs"> <span class="text-muted">Présent</span><br/></span>
-                                    <span class="glyphicon glyphicon-time text-muted c-info" data-toggle="tooltip" title="En retard"></span>
-                                    <span class="visible-xs"> <span class="text-muted">En retard</span><br/></span>
-                                    <span class="glyphicon glyphicon-remove text-muted c-info" data-toggle="tooltip" title="Absent"></span>
-                                    <span class="visible-xs"> <span class="text-muted">Absent</span><br/></span>
-                                    <button type="button" class="btn btn-primary" value="apprenant2">Arrivé(e)</button>
+                            <li class="col-xs-12 col-sm-12 list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3">
+                                        <img src="img/pages/formateur/profil.png" alt="Seth Frazier" class="img-responsive img-circle" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-8">
+                                                <span class="name">Prénom2 Nom2</span>
+                                                <span class="glyphicon glyphicon-plus text-muted c-info" data-toggle="tooltip" title="session 2"></span>
+                                                <span class="visible-xs"> <span class="text-muted">Session 2</span></span><br/>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4">
+                                                <button type="button" class="btn btn-danger">Enlever de la liste</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-8">
+                                                <span class="glyphicon glyphicon-question-sign text-muted c-info" data-toggle="tooltip" title="En attente"></span>
+                                                <span class="visible-xs"> <span class="text-muted">En attente</span><br/></span>
+                                                <span class="glyphicon glyphicon-ok text-muted c-info" data-toggle="tooltip" title="Présent"></span>
+                                                <span class="visible-xs"> <span class="text-muted">Présent</span><br/></span>
+                                                <span class="glyphicon glyphicon-time text-muted c-info" data-toggle="tooltip" title="En retard"></span>
+                                                <span class="visible-xs"> <span class="text-muted">En retard</span><br/></span>
+                                                <span class="glyphicon glyphicon-remove text-muted c-info" data-toggle="tooltip" title="Absent"></span>
+                                                <span class="visible-xs"> <span class="text-muted">Absent</span><br/></span>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4">
+                                                <button type="button" class="btn btn-primary" value="apprenant2">Arrivé(e)</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
                         </ul>
-                    </div>
                 </div>
             </div><br><br>                    
                             
             <div class="row">
-                <div class="col-xs-12 col-sm-offset-2 col-sm-8">                
+                <div class="col-xs-12 col-sm-offset-1 col-sm-10">                
                     <h2>Chercher des apprenants</h2>
                     <button type="button" class="btn btn-primary" value="ajoutApprenants" onclick="choisirApp()">Ajouter des apprenants</button>
                 </div>
