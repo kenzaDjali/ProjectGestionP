@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 24 Octobre 2014 à 10:09
+-- Généré le: Lun 17 Novembre 2014 à 14:21
 -- Version du serveur: 5.5.37
 -- Version de PHP: 5.4.4-14+deb7u10
 
@@ -30,9 +30,11 @@ CREATE TABLE IF NOT EXISTS `presences` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_time` datetime NOT NULL,
   `state` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_student` int(11) NOT NULL,
+  `id_teacher` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`)
+  KEY `id_teacher` (`id_teacher`),
+  KEY `id_student` (`id_student`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -56,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `reasons` (
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   PRIMARY KEY (`id`)
@@ -101,7 +104,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contraintes pour la table `presences`
 --
 ALTER TABLE `presences`
-  ADD CONSTRAINT `presences_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `presences_ibfk_3` FOREIGN KEY (`id_student`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `presences_ibfk_2` FOREIGN KEY (`id_teacher`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `reasons`
