@@ -11,7 +11,8 @@ $(function() {
     
     $('a[href="#to-do"]').on('click', function(event) {
         event.preventDefault();
-        alert('Fenêtre d\'ajout d\'aprpenant à faire !');
+        $('#all_students_list').modal('show');
+        $('#all_students_table').DataTable();
         //$('#to-do').modal('show');
     });
     
@@ -43,13 +44,24 @@ $(function() {
     	alert(value);
     	// switch suivant les valeurs des boutons
     	
-    	// value = sessionn : choix d'une session -> affichage des apprenants de la session choisie;
+    	// value = session_n : choix d'une session -> affichage des apprenants de la session choisie;
+    	if (value.search('session') != -1){
+    		$('#students_list').css('display','block');
+    		$('#sessions_list').css('display','none');
+    	}
     	
-    	// value = choix : acceptation ou refus des apprenants en retard et notification à la secrétaire
+    	// value = choice : acceptation ou refus des apprenants en retard et notification à la secrétaire
     	
-    	// value = apprenantn : arrivée d'un apprenant -> modification de son statut en BD et sur la page;
+    	// value = student_n : arrivée d'un apprenant -> modification de son statut en BD et sur la page;
     	
-    	// value = ajoutApprenants : pour ajouter des apprenants
+    	// value = add_student_n : ajout d'un apprenant -> visualisation de cet apprenant sur la liste d'apprenants en cours;
+    	if (value.search('add_student') != -1){
+    		$(this).parents("tr").css('display','none');
+    	}
+    	
+    	// value = add_students : pour ajouter des apprenants
+    	
+    	//value = remove_student : pour enlever un apprenant ajouté à la session
     });
     
 });
