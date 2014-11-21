@@ -62,7 +62,7 @@
                             <div class="row panel-heading c-list">
                                 <span class="title">Apprenants</span>
                                 <ul class="pull-right c-controls">
-                                    <li><a href="#to-do" data-toggle="tooltip" data-placement="top" title="Ajout Apprenant"><i class="glyphicon glyphicon-plus"></i></a></li>
+                                    <li><a href="#list_all_students" data-toggle="tooltip" data-placement="top" title="Ajout Apprenant"><i class="glyphicon glyphicon-plus"></i></a></li>
                                     <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Recherche"><i class="fa fa-ellipsis-v"></i></a></li>
                                 </ul>
                             </div>
@@ -175,40 +175,73 @@
                             <h4 class="modal-title" id="myLargeModalLabel">Apprenants</h4>
                         </div>
                         <div class="modal-body">
-                            <h3>Choisissez les apprenants que vous avez besoin d'ajouter à la session d'aujourd'hui</h3>
+                            <h4>Choisissez les apprenants que vous avez besoin d'ajouter à la session d'aujourd'hui</h4>
+                            <h4>Liste de tous les apprenants</h4>
                             <table id="all_students_table" class="display">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
+                                        <th>Slug session</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
+                                        <th>Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
-                                        <th></th>                    
+                                        <th>Slug session</th>
+                                        <th></th>                 
                                 </tfoot>
                                 <tbody>
                                     <tr id="student_1">
+                                        <td>1</td>
                                         <td>Nom1</td>
                                         <td>Prénom1</td>
+                                        <th>Certif lamp</th>
                                         <td><button type="button" class="btn btn-primary" value="add_student_1">Ajouter</button></td>
                                     </tr>
                                     <tr id="student_2">
+                                        <td>2</td>
                                         <td>Nom2</td>
                                         <td>Prénom2</td>
+                                        <th>Certif lamp</th>
                                         <td><button type="button" class="btn btn-primary" value="add_student_2">Ajouter</button></td>
                                     </tr>
                                     <tr id="student_3">
+                                        <td>3</td>
                                         <td>Nom3</td>
                                         <td>Prénom3</td>
+                                        <th>Dev</th>
                                         <td><button type="button" class="btn btn-primary" value="add_student_3">Ajouter</button></td>
                                     </tr>
                                 </tbody>
                             </table><br/>
+                            <h4>Liste des apprenants ajoutés à la session du jour</h4>
+                            <table id="added_students_table" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Slug session</th>
+                                        <th></th>         
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Slug session</th>
+                                        <th></th>                    
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>                            
                             <div class="modal-body">
                                 <button type="button" class="btn btn-primary" name="add_students" id="add_students">Enregistrer</button>
+                                <button type="button" class="btn btn-danger" name="reset_add_students" id="reset_add_students">Annuler</button>
                             </div>
                         </div>
                     </div>
