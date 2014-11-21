@@ -5,7 +5,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span></a>
-                    <a class="brand" href="index.html">IP-formation Admin</a>
+                    <a class="brand" href="index">IP-formation Admin</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
