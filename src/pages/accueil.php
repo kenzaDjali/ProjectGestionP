@@ -1,6 +1,7 @@
 <?php
 // Test quel utilisateur est ? apprenant, secretaire, formateur
 ?>
+
 <div class="container">
 	<div class="contenu">
 		<div class="row">
@@ -34,34 +35,36 @@
 				</thead>
 				<tr>
 					<td>
-					<div class= "user-image">
-					<img src="img/profil.png" alt="Chemissi Ghassen" title="Chemissi Ghassen" class="img-circle">
-					</div>
+						<div class="user-image">
+							<img src="img/avatarH.png" class="img-circle">
+						</div>
 					</td>
-					<td>News</td>
-					<td>News Cate</td>
-					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
-							class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#"
-						class="btn btn-danger btn-xs"><span
-							class="glyphicon glyphicon-remove"></span> Del</a></td>
+					<td>Mister</td>
+					<td>H</td>
+					<td class="text-center"><a href="#"><i class="icon-plus-sign-alt"></i><span>Plus</span></a>
+						<a href="#"><span class="icon-remove"></span> Supprimer </a></td>
 				</tr>
 				<tr>
-					<td>2</td>
-					<td>Products</td>
-					<td>Main Products</td>
-					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
-							class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#"
-						class="btn btn-danger btn-xs"><span
-							class="glyphicon glyphicon-remove"></span> Del</a></td>
+					<td>
+						<div class="user-image">
+							<img src="img/avatarF.png" class="img-circle">
+						</div>
+					</td>
+					<td>Lady</td>
+					<td>Women</td>
+					<td class="text-center"><a href="#"><i class="icon-plus-sign-alt"></i><span>Plus</span></a>
+						<a href="#"><span class="icon-remove"></span> Supprimer </a></td>
 				</tr>
 				<tr>
-					<td>3</td>
-					<td>Blogs</td>
-					<td>Parent Blogs</td>
-					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
-							class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#"
-						class="btn btn-danger btn-xs"><span
-							class="glyphicon glyphicon-remove"></span> Del</a></td>
+					<td>
+						<div class="user-image">
+							<img src="img/avatarIronMan.png" class="img-circle">
+						</div>
+					</td>
+					<td>Iron</td>
+					<td>Man</td>
+					<td class="text-center"><a href="#"><i class="icon-plus-sign-alt"></i><span>Plus</span></a>
+						<a href="#"><span class="icon-remove"></span> Supprimer </a></td>
 				</tr>
 			</table>
 		</div>
