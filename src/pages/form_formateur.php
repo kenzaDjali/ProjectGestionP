@@ -167,16 +167,15 @@
                 </form>
                 -->
                 
-            <div id="all_students_list" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div id="all_students_list" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addStudentsModel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title" id="myLargeModalLabel">Apprenants</h4>
-                        </div>
+                            <h4 class="modal-title" id="addStudentsModel">Choisissez les apprenants</h4>
+                        </div><!-- <div class="modal-header"> -->
                         <div class="modal-body">
-                            <h4>Choisissez les apprenants que vous avez besoin d'ajouter à la session d'aujourd'hui</h4>
-                            <h4>Liste de tous les apprenants</h4>
+                            <h5>Liste de tous les apprenants</h5>
                             <table id="all_students_table" class="display">
                                 <thead>
                                     <tr>
@@ -199,26 +198,26 @@
                                         <td>1</td>
                                         <td>Nom1</td>
                                         <td>Prénom1</td>
-                                        <th>Certif lamp</th>
+                                        <td>Certif lamp</td>
                                         <td><button type="button" class="btn btn-primary" value="add_student_1">Ajouter</button></td>
                                     </tr>
                                     <tr id="student_2">
                                         <td>2</td>
                                         <td>Nom2</td>
                                         <td>Prénom2</td>
-                                        <th>Certif lamp</th>
+                                        <td>Certif lamp</td>
                                         <td><button type="button" class="btn btn-primary" value="add_student_2">Ajouter</button></td>
                                     </tr>
                                     <tr id="student_3">
                                         <td>3</td>
                                         <td>Nom3</td>
                                         <td>Prénom3</td>
-                                        <th>Dev</th>
+                                        <td>Dev</td>
                                         <td><button type="button" class="btn btn-primary" value="add_student_3">Ajouter</button></td>
                                     </tr>
                                 </tbody>
                             </table><br/>
-                            <h4>Liste des apprenants ajoutés à la session du jour</h4>
+                            <h5>Liste des apprenants ajoutés à la session du jour</h5>
                             <table id="added_students_table" class="display">
                                 <thead>
                                     <tr>
@@ -239,11 +238,11 @@
                                 <tbody>
                                 </tbody>
                             </table>                            
-                            <div class="modal-body">
+                            <div>
                                 <button type="button" class="btn btn-primary" name="add_students" id="add_students">Enregistrer</button>
                                 <button type="button" class="btn btn-danger" name="reset_add_students" id="reset_add_students">Annuler</button>
                             </div>
-                        </div>
+                        </div><!-- <div class="modal-body"> -->
                     </div>
                 </div>
             </div>          
