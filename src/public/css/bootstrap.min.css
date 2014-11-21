@@ -96,14 +96,14 @@ textarea {
 }
 body {
 	margin: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	color: #333333;
 	background-color: #ffffff;
 }
 a {
-	color: #19bc9c;
+	color: #08254F;
 	text-decoration: none;
 }
 a:hover {
@@ -515,7 +515,7 @@ fieldset {
 }
 legend {
 	display: block;
-	width: 100%;
+	width: 75%;
 	padding: 0;
 	margin-bottom: 27px;
 	font-size: 19.5px;
@@ -989,8 +989,9 @@ table {
 	background-color: transparent;
 }
 .table {
-	width: 100%;
+	width: 70%;
 	margin-bottom: 18px;
+	margin-left: 30px;
 }
 .table th, .table td {
 	padding: 8px;
@@ -1938,7 +1939,7 @@ background-repeat:no-repeat;
   background-image: -moz-linear-gradient(rgba(126, 178, 22, 0), rgba(0, 0, 0, 0.1));
   background-image: -o-linear-gradient(rgba(126, 178, 22, 0), rgba(0, 0, 0, 0.1));
   background-image: linear-gradient(rgba(126, 178, 22, 0), rgba(0, 0, 0, 0.1));
-  background-color: #7eb216;
+  background-color: #1399DC;
   border-color: #6e9b13 #6e9b13 #3e570b;
   border-color: rgba(0, 0, 0, 0.05) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.15);
   color: white;
@@ -1946,7 +1947,7 @@ background-repeat:no-repeat;
   *background-color: #6e9b13;
 }
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
-	background-color: #6e9b13;
+	background-color: #1399DC;
   color: white;
   *background-color: #5e8510;
 }
@@ -3645,3 +3646,4 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
 .invisible {
 	visibility: hidden;
 }
+>>>>>>> refs/remotes/origin/interface_apprenant

@@ -10,6 +10,7 @@
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
                 rel="stylesheet">
         <link href="css/font-awesome.css" rel="stylesheet">
+        <link href ="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/pages/dashboard.css" rel="stylesheet">
         <link href="css/pages/profil.css" rel="stylesheet">
