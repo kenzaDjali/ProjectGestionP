@@ -8,13 +8,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
 	    
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 	
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="/css/font-awesome.css" rel="stylesheet">
 	    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
 	    
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -32,7 +32,7 @@
 				<span class="icon-bar"></span>
 			</a>
 			
-			<a class="brand" href="index.php">
+			<a class="brand" href="index">
 				IP-Formation admin				
 			</a>		
 			
@@ -40,7 +40,7 @@
 				<ul class="nav pull-right">
 					
 					<li class="">						
-						<a href="index.php" class="">
+						<a href="/index.php" class="">
 							<i class="icon-chevron-left"></i>
 							Back to Dashboard
 						</a>
@@ -70,17 +70,14 @@
 				<h2>Who! bad trip man. No more pixesl for you.</h2>
 				
 				<div class="error-details">
-					Sorry, an error has occured! Why not try going back to the <a href="index.php">home page</a> or perhaps try following!
+					Sorry, an error has occured! Why not try going back to the <a href="/index.php">home page</a> or perhaps try following!
 					
 				</div> <!-- /error-details -->
 				
 				<div class="error-actions">
-					<a href="index.php" class="btn btn-large btn-primary">
-						<i class="icon-chevron-left"></i>
-						&nbsp;
-						Back to Dashboard						
-					</a>
 					
+					<a href ="/index.php" class="btn btn-large btn-primary"> 
+					<i class="icon-chevron-left"></i>	Back to Dashboard </a> 
 					
 					
 				</div> <!-- /error-actions -->
@@ -94,8 +91,9 @@
 </div> <!-- /container -->
 
 
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+
 
 </body>
 
