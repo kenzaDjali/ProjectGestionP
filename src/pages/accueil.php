@@ -33,7 +33,11 @@
 					</tr>
 				</thead>
 				<tr>
-					<td>1</td>
+					<td>
+					<div class= "user-image">
+					<img src="img/profil.png" alt="Chemissi Ghassen" title="Chemissi Ghassen" class="img-circle">
+					</div>
+					</td>
 					<td>News</td>
 					<td>News Cate</td>
 					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span
