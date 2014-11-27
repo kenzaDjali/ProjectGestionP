@@ -1,3 +1,70 @@
+function test(value, element){
+	
+	console.log(element);
+	var table1, table2, table_src, table_dest;
+	var action, val;
+	
+	var index = value.lastIndexOf('_');
+	var id = value.substring(index+1);	
+	
+	var table1 = $('#all_students_table').DataTable();
+	var table2 = $('#added_students_table').DataTable();
+	
+	if ((value.search('add_student') != -1) | (value.search('del_student') != -1)){
+		if (value.search('add_student') != -1){
+			
+			table_src = table1;
+			table_dest = table2;
+			
+			action = 'add';
+			
+		}
+		if (value.search('del_student') != -1){
+			
+			table_src = table2;
+			table_dest = table1;
+			
+			action = 'del';
+			
+		}	
+		console.log(element.val());
+		// changement de la valeur et du texte afficher du bouton
+		if (action == 'add'){
+			element.val('del_student_'+ id);
+			element.text('Enlever');
+		} else { // action == 'del'
+			element.val('add_student_'+ id);
+			element.text('Ajouter');
+		}
+		console.log(element.val());
+		
+		var cells = element.parents('tr').find('td');
+		var length = cells.length;
+		var row= [];
+		
+		// gestion de la première ligne
+		var cell = cells.first();
+		row.push(cell.html());
+		
+		// gestion des lignes suivantes
+		for (var i = 0; i< length-1; i++){
+			cells = cells.next();
+			cell = cells.first();
+			row.push(cell.html());
+		}
+	
+		table_dest.row.add(row).draw();
+	
+		table_src.row(element.parents('tr')).remove().draw();
+		
+		console.log(element);
+		element.bind('click', function(){
+			alert('heho ');
+			//test(element.val(), element);
+		});
+	}
+}
+
 $(function() {
 	
 	// chargement de la datatable
@@ -63,6 +130,10 @@ $(function() {
     	
     	// value = student_n : arrivée d'un apprenant -> modification de son statut en BD et sur la page;
     	
+    	if ((value.search('add_student') != -1) | (value.search('del_student') != -1)) {
+    		test($(this).val(), $(this));
+    	}
+    	/*
     	// value = add_student_n : ajout d'un apprenant -> visualisation de cet apprenant sur la liste d'apprenants en cours;
     	var index = value.lastIndexOf('_');
     	var id = value.substring(index+1);
@@ -72,20 +143,20 @@ $(function() {
     		var table_added = $('#added_students_table').DataTable();
     		console.log(table_all);
    		
-    		/*
-    		for (var i = 0; i < j; i++){
-    			rows.push(cells[i])
-    		} 		
     		
-    		var cell;
-    		for (cell in cells){
-    			console.log(cell);
-    		}
-    		    		cells.each(function(i, value){
-    			console.log("valeur de cellule");
-    			console.log(value.html());
-    			rows.push(value);
-    		});*/
+//    		for (var i = 0; i < j; i++){
+//    			rows.push(cells[i])
+//    		} 		
+//    		
+//    		var cell;
+//    		for (cell in cells){
+//    			console.log(cell);
+//    		}
+//    		    		cells.each(function(i, value){
+//    			console.log("valeur de cellule");
+//    			console.log(value.html());
+//    			rows.push(value);
+//    		});
     		
     		// changement de la valeur et du texte afficher du bouton
     		$(this).val('del_student_'+ id);
@@ -142,15 +213,14 @@ $(function() {
     		table_added.row($(this).parents('tr')).remove().draw(false);
     		var text = "add_student_" + id;
     		//$('button[value='+text+']').on
-    		/*
-    		$('#all_students_table').append($(this).parents('tr'));
-    		console.log($(this));
-    		$(this).val('add_student_'+ id);
-    		$(this).text('Ajouter');
-    		$('#all_students_table').DataTable();
-    		*/
+//    		$('#all_students_table').append($(this).parents('tr'));
+//    		console.log($(this));
+//    		$(this).val('add_student_'+ id);
+//    		$(this).text('Ajouter');
+//    		$('#all_students_table').DataTable();
+    		
     	}
-    	
+    	*/
     	// value = add_students : pour ajouter des apprenants
     	
     	//value = remove_student : pour enlever un apprenant ajouté à la session
