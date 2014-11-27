@@ -44,8 +44,11 @@
                     <ul class="mainnav">
                         <li class="active"><a href="index"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
                         <li><a href="calender.html"><i class="icon-calendar"></i><span>Calendrier</span> </a> </li>
-                        <li><a href="form_ajout_apprenant"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
-                        <li><a href="admin/form_ajout_session?id=<?="admin"?>"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
+
+                        <li><a href="form_ajout_apprenant.php"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
+                        <li><a href="form_ajout_session.php"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
+                        <li><a href="form_apprenant.php"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>
+                        <li><a href="form_profil.php"><i class="fa fa-newspaper-o"></i><span>Profil</span> </a> </li>
                         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="login.html">Login</a></li>
@@ -59,3 +62,4 @@
             </div>
             <!-- /subnavbar-inner --> 
         </div>
+

@@ -8,7 +8,18 @@
         <script src="js/bootstrap.js"></script>
         <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
          
-        <script src="js/base.js"></script> 
+        <script src="js/base.js"></script>
+        <script src="js/table.js"></script>
+        <script src="js/secretaire.js"></script>
+        <!-- DataTables -->
+        <script type="text/javascript"  src="assets/DataTables-1.10.3/media/js/jquery.dataTables.js"></script>
+        <script>
+
+         $(document).ready( function () {
+        	 $('#table_id').DataTable();
+     	     });
+        </script>
+        
         <script>     
         
                 var lineChartData = {
