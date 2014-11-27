@@ -43,11 +43,14 @@
                 <div class="container">
                     <ul class="mainnav">
                         <li class="active"><a href="index"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
-                        <li><a href="calender"><i class="icon-calendar"></i><span>Calendrier</span> </a> </li>
-                        <li><a href="form_add_user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
-                        <li><a href="form_add_session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
+                        <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']='4'){ ?>
+                         <li><a href="form_add_user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
+                        <li><a href="form_add_session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>                                                      
+                       <?php }?>
+                       <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']='1'){ ?>
                         <li><a href="form_learner"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>
                         <li><a href="form_profil"><i class="fa fa-newspaper-o"></i><span>Profil</span> </a> </li>
+                        <?php }?>
                         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="login.html">Login</a></li>

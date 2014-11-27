@@ -1,9 +1,12 @@
 <?php
 // TODO :  si get est vide  et isset $_session
-if (empty($_GET)) {
+if (empty($_GET)&& !isset($_SESSION)) {
     $pathPage = '../pages/form_login.php';
     $title = "Login";
-} else {
+}elseif(session_start() && isset($_SESSION['role_id'])){
+    $pathPage = '../pages/welcome.php';
+} 
+else {
     $pathPage = '../pages/' . $_GET['page'] . '.php';
     $title = ucfirst($_GET['page']);
     if (! file_exists($pathPage)) {

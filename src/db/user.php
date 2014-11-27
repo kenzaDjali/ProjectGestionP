@@ -12,13 +12,13 @@ function creat($data)
     $connect = connexion();
 
     $sql = 'INSERT INTO `project`.`users` (`id`, `last_name`, `first_name`, `email`, `password`,`role`, `cell_phone_number`,`phone_number`)
-			VALUES (NULL, :last_name, :first_name, :password, :email, :role_id, :cell_phone_number, :phone_number);';
+			VALUES (NULL, :last_name, :first_name,:email, :password,  :role_id, :cell_phone_number, :phone_number);';
     $sth = $connect->prepare($sql);
     $sth->execute(array(
         'last_name' => $data['last_name'],
         'first_name' => $data['first_name'],
-        'password' => $data['password'],
         'email' => $data['email'],
+        'password' => $data['password'],        
         'role_id' => $data['role_id'],
         'cell_phone_number' => $data['cell_phone_number'],
         'phone_number' => $data['phone_number']
