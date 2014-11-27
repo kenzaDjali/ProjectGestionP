@@ -45,7 +45,7 @@ $(function() {
         }
     });
     
-    $('button').live('click', function(e){
+    $('button').on('click', function(e){
     	//e.preventDefault();
     	var value = $(this).val();
     	console.log(value);
