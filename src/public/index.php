@@ -10,7 +10,7 @@ if (empty($_GET)) {
         $pathPage = 'error.php';
     }
     $active = "?page=" . $_GET['page'];
-}
+} 
 
 ob_start();
 require_once $pathPage;
