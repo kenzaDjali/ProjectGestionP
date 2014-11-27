@@ -11,7 +11,8 @@
                 <fieldset>
                     <hr />
                     <!-- Form Name -->
-                    <h3>Formulaire de saisie d'un apprenant</h3>
+                    <h3>Formulaire de saisie d'un utilisateur
+                   </h3>
                     <hr />
                    
                     <!-- Text input-->

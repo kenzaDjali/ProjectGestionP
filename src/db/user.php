@@ -28,7 +28,7 @@ function creat($data)
         $result = false;
     }
 
-    return $connect->lastInsertId();
+    return $result;
 }
 
 
@@ -113,4 +113,21 @@ function update($data)
     }
 
     return $result;
+}
+
+function findByEmailPassword ($data)
+{
+    $connect = connexion();
+    $sql = "SELECT * FROM users WHERE `users`.`email` = :email AND `users`.`password`= :password;";
+    $sth = $connect->prepare($sql);
+    $sth->execute(array (
+        'email'=>$data['email'],
+        'password'=>$data['password']
+    ));
+    if ($sth->rowCount() > 1) {
+        // ERREUR FATALE
+    }
+    $user = $sth->fetchAll(PDO::FETCH_ASSOC); // Retrieves a string array
+    return $user;
+    
 }

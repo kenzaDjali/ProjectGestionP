@@ -1,15 +1,5 @@
 <?php
-if (isset($_POST['submit']) && ! empty($_POST)) {
-    
-    // si admin
-    if (false) {
-        $page = "/admin/accueil";
-        header('Location:'.$page);
-    }else {
-        $page ='/welcome';
-        header('Location:'.$page);
-    }
-}
+require_once '../functions/login.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +23,7 @@ if (isset($_POST['submit']) && ! empty($_POST)) {
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-3 control-label"> Email</label>
 								<div class="col-sm-9">
-									<input type="email" class="form-control" id="inputEmail3"
+									<input type="email" name ="email"class="form-control" id="inputEmail3"
 										placeholder="Email" required>
 								</div>
 							</div>
@@ -41,7 +31,7 @@ if (isset($_POST['submit']) && ! empty($_POST)) {
 								<label for="inputPassword3" class="col-sm-3 control-label">
 									Password</label>
 								<div class="col-sm-9">
-									<input type="password" class="form-control" id="inputPassword3"
+									<input type="password" name="password" class="form-control" id="inputPassword3"
 										placeholder="Password" required>
 								</div>
 							</div>

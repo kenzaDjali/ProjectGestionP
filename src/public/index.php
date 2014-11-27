@@ -1,7 +1,7 @@
 <?php
 // TODO :  si get est vide  et isset $_session
 if (empty($_GET)) {
-    $pathPage = '../pages/login.php';
+    $pathPage = '../pages/form_login.php';
     $title = "Login";
 } else {
     $pathPage = '../pages/' . $_GET['page'] . '.php';
@@ -22,7 +22,7 @@ if ($pathPage == "error.php") {
     echo $buffer;
 } 
 
-elseif ($pathPage == "../pages/login.php") {
+elseif ($pathPage == "../pages/form_login.php") {
 
     echo $buffer;
     
