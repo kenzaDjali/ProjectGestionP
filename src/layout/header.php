@@ -15,6 +15,7 @@
         <link href="css/pages/dashboard.css" rel="stylesheet">
         <link href="css/pages/profil.css" rel="stylesheet">
         <link href="css/pages/secretaire.css" rel="stylesheet">
+        <link href="css/pages/admin.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/DataTables-1.10.3/media/css/jquery.dataTables.css">
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>

@@ -1,18 +1,19 @@
 <?php 
-   
-    if (isset($_POST['submit']) && $_POST['submit'] == "register"){
-        var_dump($_POST);
-    }
+//TODO: Changer le type de téléphone,
+//TODO:  Tester que la selection n'a pas dépsser 1->4
+ require_once '../functions/user.php';
+ 
 ?>
 
         <div class="container">
         <div class="contenu">
             <form class="form-horizontal" action="" method="POST">
                 <fieldset>
-                
+                    <hr />
                     <!-- Form Name -->
-                    <legend>Formulaire de saisie d'un apprenant</legend>
-                    
+                    <h3>Formulaire de saisie d'un apprenant</h3>
+                    <hr />
+                   
                     <!-- Text input-->
                     <div class="control-group">
                         <label class="control-label" for="last_name">Nom</label>
@@ -39,6 +40,27 @@
                     
                     <!-- Text input-->
                     <div class="control-group">
+                        <label class="control-label" for="password">Mot de passe</label>
+                        <div class="controls">
+                            <input id="password" name="password" type="password"  class="input-xlarge" required="">
+                        </div>
+                    </div>
+                    
+                    <!-- Select Basic -->
+                    <div class="control-group">
+                          <label class="control-label" for="selectbasic">Role</label>
+                          <div class="controls">
+                            <select id="role_id" name="role_id" class="input-large">
+                              <option value="1">Apprenant</option>
+                              <option value="2">Formateur</option>
+                              <option value="3">Secrétaire</option>
+                              <option value="4">Administrateur</option>
+                            </select>
+                         </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="control-group">
                         <label class="control-label" for="cell_phone_number">Numéro de téléphone portable</label>
                         <div class="controls">
                             <input id="cell_phone_number" name="cell_phone_number" type="text" placeholder="Entrez un numéro de téléphone portable" class="input-xlarge">
@@ -54,7 +76,7 @@
                     </div>
                 
                     <!-- Button (Double) -->
-                    <div class="control-group">
+                    <div class="control-group double">
                         <label class="control-label" for="submit"></label>
                         <div class="controls">
                             <button id="submit" name="submit" class="btn btn-success" value="register">Enregistrer l'apprenant</button>

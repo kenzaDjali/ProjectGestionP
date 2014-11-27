@@ -44,7 +44,7 @@
                     <ul class="mainnav">
                         <li class="active"><a href="index"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
                         <li><a href="calender"><i class="icon-calendar"></i><span>Calendrier</span> </a> </li>
-                        <li><a href="form_add_learner"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
+                        <li><a href="form_add_user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
                         <li><a href="form_add_session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>
                         <li><a href="form_learner"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>
                         <li><a href="form_profil"><i class="fa fa-newspaper-o"></i><span>Profil</span> </a> </li>
