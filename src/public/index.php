@@ -8,7 +8,7 @@ if (empty($_GET)) {
     $title = ucfirst($_GET['page']);
     if (! file_exists($pathPage)) {
         http_response_code(404); // le robot comprend qu'il y a une erreur
-            $pathPage = 'error.php';      
+        $pathPage = 'error.php';      
     }
     $active = "?page=" . $_GET['page'] . '.php';
 }
@@ -26,15 +26,7 @@ elseif ($pathPage == "../pages/login.php") {
 
     echo $buffer;
     
-} elseif (strcmp($pathPage, "../pages/admin")) {
-    
-    require_once '../pages/admin/layout/header.php';
-    require_once '../pages/admin/layout/nav.php';
-    
-    echo $buffer;
-    
-    require_once '../pages/admin/layout/footer.php';
-} else {
+}  else {
     require_once '../layout/header.php';
     require_once '../layout/nav.php';
     

@@ -6,7 +6,7 @@ if (isset($_POST['submit']) && ! empty($_POST)) {
         $page = "/admin/accueil";
         header('Location:'.$page);
     }else {
-        $page ='/accueil';
+        $page ='/welcome';
         header('Location:'.$page);
     }
 }
