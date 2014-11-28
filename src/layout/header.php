@@ -12,7 +12,7 @@
                 rel="stylesheet">
         <link href="css/font-awesome.css" rel="stylesheet">
         <link href ="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="assets/DataTables-1.10.3/media/css/jquery.dataTables.css" rel="stylesheet">
+        <link href="assets/datatables/media/css/jquery.dataTables.css" rel="stylesheet">
 
         <link href="css/style.css" rel="stylesheet">
         <link href="css/pages/dashboard.css" rel="stylesheet">
@@ -27,7 +27,7 @@
        <link href="css/pages/teacher_session.css" rel="stylesheet">
 
 		<!-- pour l'admin -->
-        <link href="css/pages/admin.css" rel="stylesheet">
+        <!-- <link href="css/pages/admin.css" rel="stylesheet">  -->
 
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

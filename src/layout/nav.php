@@ -45,6 +45,10 @@
                         <li><a href="form_learner"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>
                         <li><a href="form_profil"><i class="fa fa-newspaper-o"></i><span>Profil</span> </a> </li>
                         <?php }?>
+                       <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='2'){ ?>
+                        <li><a href="teacher"><i class="fa fa-users"></i><span>Classe</span> </a> </li>
+                        <!-- <li><a href="form_profil"><i class=""></i><span>Profil</span> </a> </li> -->
+                        <?php }?>                        
                         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="login.html">Login</a></li>
