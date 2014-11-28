@@ -61,18 +61,20 @@ $(function() {
     $('a[href="#list_all_learners"]').on('click', function(event) {
         event.preventDefault();
         $('#all_learners_list').modal('show');
+/*
         if ( $.fn.dataTable.isDataTable( '#all_learners_table' ) ) {
             var all_learners_table = $('#all_learners_table').DataTable();
             var column = all_learners_table.column(0);
             column.visible(false);
             var added_learners_table = $('#added_learners_table').DataTable();
-            column = added_learners_table.column(0);
-            column.visible(false);
+            var column = added_learners_table.column(0);
+            column.visible(false);            
         }
         else {
+*/        
         	$('#all_learners_table').DataTable();
         	$('#added_learners_table').DataTable();
-        }
+//        }
     });
     
     $('[data-command="toggle-search"]').on('click', function(event) {
@@ -122,18 +124,20 @@ $(function() {
     	// cas où le formateur fait un choix
     	if ($(this).val() == 'choice'){
 	    	
-	    	var choice = $('input[type="radio"][name="choice"]').val();
-	    	
+	    	var choice = $('input[type="radio"][name="choice"]:checked').val();
+	    	console.log(choice);
 	    	if (choice == 1){
-	    		$('#choice_done p').text("Vous acceptez les retardataires.")
-	    	} else {
-	    		$('#choice_done p').text("Vous n'acceptez pas les retardataires.")
+	    		$('#choice_done p').text("Vous acceptez les retardataires.");
+	    	} else if (choice == 0){
+	    		$('#choice_done p').text("Vous n'acceptez pas les retardataires.");
 	    	} 
-	    		
-	    	$('#choice_done').css('display','block');
-	    	$('#choice_to_do').css('display','none');
+	    	if ((choice == 0) | (choice == 1)){	
+		    	$('#choice_done').css('display','block');
+		    	$('#choice_to_do').css('display','none');
+	    	}
 	    	
-	    	// notification à la secrétaire
+	    	// notification à la secrétaire 
+	    	// comment ? nouvelle table avec id_teacher, datetime, boolean ?
     	}
     	
     	// cas où le formateur souhaite revenir sur son choix

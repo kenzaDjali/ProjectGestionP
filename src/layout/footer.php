@@ -4,26 +4,25 @@
         <!-- Placed at the end of the document so the pages load faster --> 
         <script src="assets/jquery/dist/jquery.min.js"></script> 
         <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
         <script src="js/excanvas.min.js"></script> 
         <script src="js/chart.min.js" type="text/javascript"></script> 
-        <!-- Tooltip Boostrap -->
-        <script language="javascript" type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
 
-         
-        <!-- <script src="js/base.js"></script> -->
+        <script type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>        
+        
+        <script src="js/base.js"></script>
         
         <!-- DataTables -->
         <script type="text/javascript"  src="assets/datatables/media/js/jquery.dataTables.js"></script>
         
         <!-- pour le formateur -->
-               
-        <!-- <script language="javascript" type="text/javascript" src="js/pages/teacher.js"></script> -->
-        <script language="javascript" type="text/javascript" src="js/pages/teacher_session.js"></script>        
+        <!-- Tooltip Boostrap -->
+        <script type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
+        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+        <script type="text/javascript" src="js/pages/teacher.js"></script>
+        <script type="text/javascript" src="js/pages/teacher_session.js"></script>        
 
-        <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>        
-        
-    <!--     
+        <script type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>        
+           
         <script>
 
          $(document).ready( function () {
@@ -54,7 +53,7 @@
         
                 }
         
-                var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
+                //var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
         
                 var barChartData = {
                     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -151,6 +150,5 @@
                 });
               });
         </script><!-- /Calendar -->
-        -->
     </body>
 </html>

@@ -48,7 +48,7 @@
                         <button class="change_session btn btn-primary">Changer de session</button><br><br>
                         <div class="row" id="choice_to_do">
                             <div class="col-xs-12 col-sm-8">
-                                <label class="radio"><input type="radio" name="choice" value="1" checked>J'accepte les retardataires</label>
+                                <label class="radio"><input type="radio" name="choice" value="1">J'accepte les retardataires</label>
                                 <label class="radio"><input type="radio" name="choice" value="0">Je n'accepte pas les retardataires</label>
                             </div>
                             <div class="col-xs-12 col-sm-4">
