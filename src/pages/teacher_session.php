@@ -1,5 +1,5 @@
 <?php
-    $title = "Appli formateur";
+    $title = "Formateur - session";
 ?>
         <div class="container">
             <div class="row" id="sessions_list">

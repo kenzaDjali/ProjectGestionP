@@ -13,7 +13,8 @@
         
         <link href="css/style.css" rel="stylesheet">
         <link href="css/pages/dashboard.css" rel="stylesheet">
-        <link href="css/pages/teacher.css" rel="stylesheet">
+        
+        <link href="css/pages/teacher_session.css" rel="stylesheet">
         
         <!-- DataTables CSS -->
         <!-- <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet">  -->
