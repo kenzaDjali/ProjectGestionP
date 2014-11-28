@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         
-        <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
                 rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
         <link href ="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/DataTables-1.10.3/media/css/jquery.dataTables.css" rel="stylesheet">
 
@@ -23,7 +24,7 @@
         <link href="css/pages/secretaire.css" rel="stylesheet">
 
 		<!-- pour le formateur -->
-        <link href="css/pages/teacher_session.css" rel="stylesheet">
+       <link href="css/pages/teacher_session.css" rel="stylesheet">
 
 		<!-- pour l'admin -->
         <link href="css/pages/admin.css" rel="stylesheet">
