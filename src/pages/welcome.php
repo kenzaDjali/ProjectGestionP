@@ -14,7 +14,6 @@ $roles = array(
 // TODO: Test quel utilisateur est ? apprenant, secretaire, formateur
 
 if (isset($_SESSION['role_id'])) {
-    var_dump($_SESSION);
     if (key_exists($_SESSION['role_id'], $roles)) {
         $role_id = $_SESSION['role_id'];
         switch ($role_id) {

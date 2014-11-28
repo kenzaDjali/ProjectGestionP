@@ -12,10 +12,8 @@ if (isset($_POST['submit']) && ! empty($_POST)) {
     $user = findByEmailPassword($_POST);
     if (! empty($user)) {
         if (key_exists($user[0]['role'], $roles)) {
-            
             session_start();
             $_SESSION['role_id'] = $user[0]['role'];
-            var_dump($user[0]['role']);
             $page = '/welcome';
             header('Location:' . $page);
         }
