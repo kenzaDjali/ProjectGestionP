@@ -17,18 +17,10 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/pages/dashboard.css" rel="stylesheet">
 
-		<!-- pour l'apprenant -->
-        <!-- <link href="css/pages/profil.css" rel="stylesheet"> -->
-
-		<!-- pour la secrétaire -->
-        <!-- <link href="css/pages/secretaire.css" rel="stylesheet"> -->
-
-		<!-- pour le formateur -->
-       <link href="css/pages/teacher_session.css" rel="stylesheet">
-
-		<!-- pour l'admin -->
-        <!-- <link href="css/pages/admin.css" rel="stylesheet"> -->
-       
+        <?php if (isset($endHeader)) {
+            echo $endHeader;
+        }?>
+              
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

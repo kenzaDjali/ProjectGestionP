@@ -22,15 +22,11 @@ $buffer = ob_get_clean();
 
 if ($pathPage == "error.php") {
     echo $buffer;
-} 
-
-elseif ($pathPage == "../pages/form_login.php") {
+} elseif ($pathPage == "../pages/form_login.php") {
     echo $buffer;
 } elseif ($pathPage == "../pages/speed_login.php") {
     echo $buffer;
-} 
-
-else {
+} else {
     require_once '../layout/header.php';
     require_once '../layout/nav.php';
     

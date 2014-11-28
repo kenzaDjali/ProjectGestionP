@@ -1,3 +1,14 @@
+<?php
+    $title = "Admin";
+    
+    ob_start();
+?>
+		<!-- pour l'admin -->
+        <link href="css/pages/admin.css" rel="stylesheet">
+<?php
+    $endHeader = ob_get_clean();
+?>
+
 <div class="container">
 	<div class="contenu">
 		<form class="form-horizontal">

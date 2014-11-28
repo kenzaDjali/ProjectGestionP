@@ -1,5 +1,13 @@
-<?php ?>
-
+<?php
+    $title = "Secrétaire";
+    
+    ob_start();
+?>
+		<!-- pour la secrétaire -->
+        <link href="css/pages/secretaire.css" rel="stylesheet">    
+<?php
+    $endHeader = ob_get_clean();
+?>
 <div class="container">
 	<div class="contenu">
 		<div class="row">

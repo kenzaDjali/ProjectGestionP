@@ -13,22 +13,12 @@
         
         <!-- DataTables -->
         <script type="text/javascript"  src="assets/datatables/media/js/jquery.dataTables.js"></script>
-        
-        <!-- pour le formateur -->
-        <!-- Tooltip Boostrap -->
-        <script type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
-        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
-        <script type="text/javascript" src="js/pages/teacher.js"></script>
-        <script type="text/javascript" src="js/pages/teacher_session.js"></script>        
 
         <script type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>        
-           
-        <script>
-
-         $(document).ready( function () {
-        	 $('#table_id').DataTable();
-     	     });
-        </script>
+        
+        <?php if (isset($endFooter)) {
+            echo $endFooter;
+        }?>
          
         <script>     
         

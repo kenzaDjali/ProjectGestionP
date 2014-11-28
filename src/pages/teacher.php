@@ -1,7 +1,12 @@
 <?php
     $title = "Formateur";
-?>
     
+    ob_start();
+?>   
+        <script type="text/javascript" src="js/pages/teacher_session.js"></script>
+<?php
+    $endFooter = ob_get_clean();
+?>   
         <div class="container">
             <div class="contenu">
                 <button id="same_class" class="btn btn-primary">Choisir le même groupe d'apprenants que précédemment</button>
@@ -29,7 +34,7 @@
                     </form>
                 </div><br><br>
                 <div id="redo">
-                    <a href="/teacher_session.php" class="btn btn-primary">Redéfinir le groupe d'apprenants</a>
+                    <a href="/teacher_session" class="btn btn-primary">Redéfinir le groupe d'apprenants</a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,23 @@
 <?php
     $title = "Formateur - session";
+    
+    ob_start();
 ?>
+        <!-- pour le formateur -->
+        <link href="css/pages/teacher_session.css" rel="stylesheet">    
+<?php
+    $endHeader = ob_get_clean();
+    ob_start();
+?>   
+        <!-- pour le formateur -->
+        <!-- Tooltip Boostrap -->
+        <script type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
+        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+        <script type="text/javascript" src="js/pages/teacher_session.js"></script>
+<?php
+    $endFooter = ob_get_clean();
+?>   
+
         <div class="container">
             <div class="row" id="sessions_list">
                 <div class="col-xs-12 col-sm-offset-1 col-sm-10">

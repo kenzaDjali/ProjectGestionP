@@ -1,5 +1,12 @@
 <?php
-
+    $title = "Apprenant";
+    
+    ob_start();
+?>
+		<!-- pour l'apprenant -->
+        <link href="css/pages/profil.css" rel="stylesheet">    
+<?php
+    $endHeader = ob_get_clean();
 ?>
 
 <div class="container">

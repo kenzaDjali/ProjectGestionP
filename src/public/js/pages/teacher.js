@@ -16,7 +16,7 @@ $(function() {
     	// redirection vers la page teacher_session.php avec la date choisie (en session ou par get/post ?)
     	// passage de la date à faire ? comment par js à part en get ?
     	// redirection
-    	$(location).attr('href',"/teacher_session.php?id=3");
+    	$(location).attr('href',"/teacher_session?id=3");
     });	
 	
 	// au clic sur bouton retour
