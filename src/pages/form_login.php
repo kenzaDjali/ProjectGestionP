@@ -53,8 +53,7 @@ require_once '../functions/login.php';
 						</form>
 					</div>
 					<div class="panel-footer">
-						Not Registred? <a href="http://www.jquery2dotnet.com">Register
-							here</a>
+						Connexion rapide <a href="speed_login">Connexion rapide</a>
 					</div>
 				</div>
 			</div>

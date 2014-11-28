@@ -1,7 +1,12 @@
 <?php 
+if(!isset($_SESSION)) {
+    session_start();
+    var_dump($_SESSION);
+}
 //TODO: Changer le type de téléphone,
 //TODO:  Tester que la selection n'a pas dépsser 1->4
  require_once '../functions/user.php';
+ 
  
 ?>
 

@@ -17,14 +17,8 @@
                                   <li><a href="javascript:;">Help</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-user"></i> 
-                                    EGrappler.com <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                  <li><a href="javascript:;">Profile</a></li>
-                                  <li><a href="javascript:;">Logout</a></li>
-                                </ul>
+                                <li><a href="logout">Logout</a></li>
+                              
                             </li>
                         </ul>
                         <form class="navbar-search pull-right">
@@ -42,12 +36,12 @@
             <div class="subnavbar-inner">
                 <div class="container">
                     <ul class="mainnav">
-                        <li class="active"><a href="index"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
-                        <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']='4'){ ?>
+                        <li class="active"><a href="welcome"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
+                        <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='4'){ ?>
                          <li><a href="form_add_user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
                         <li><a href="form_add_session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>                                                      
                        <?php }?>
-                       <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']='1'){ ?>
+                       <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='1'){ ?>
                         <li><a href="form_learner"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>
                         <li><a href="form_profil"><i class="fa fa-newspaper-o"></i><span>Profil</span> </a> </li>
                         <?php }?>
