@@ -18,7 +18,7 @@ h4 {
 	font-weight: bold;
 }
 
-#students_list {
+#learners_list, #choice_done {
 	display: none;
 }
 

@@ -16,7 +16,7 @@
         <!-- <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.js"></script> -->
         <script type="text/javascript" charset="utf8" src="assets/datatables/media/js/jquery.dataTables.min.js"></script>
         <!--  Fichier pour formateur -->
-        <script language="javascript" type="text/javascript" src="js/pages/formateur.js"></script>
+        <script language="javascript" type="text/javascript" src="js/pages/teacher.js"></script>
         
         <!-- Autre fichier -->
         <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
