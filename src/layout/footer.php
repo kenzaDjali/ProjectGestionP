@@ -10,13 +10,11 @@
         <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
          
         <script src="js/base.js"></script>
-        <script src="js/table.js"></script>
         
         <!-- DataTables -->
         <script type="text/javascript"  src="assets/DataTables-1.10.3/media/js/jquery.dataTables.js"></script>
         
-        <!-- for secretary -->
-        <script src="js/secretaire.js"></script>
+    
         
         <!-- for teacher -->
         <!-- Tooltip Boostrap -->
@@ -56,7 +54,7 @@
         
                 }
         
-                var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
+              //  var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
         
                 var barChartData = {
                     labels: ["January", "February", "March", "April", "May", "June", "July"],

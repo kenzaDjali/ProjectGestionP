@@ -5,7 +5,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span></a>
-                    <a class="brand" href="index">IP-formation <?= 'Admin ou Utilisateur ?'?></a>
+                    <a class="brand" href="index">IP-formation 
+                        <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='4'){ echo 'Administrateur';}
+                                else {echo 'Utilisateur';}?>
+                    </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
