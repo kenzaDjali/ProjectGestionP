@@ -64,10 +64,10 @@ $(function() {
 /*
         if ( $.fn.dataTable.isDataTable( '#all_learners_table' ) ) {
             var all_learners_table = $('#all_learners_table').DataTable();
-            var column = all_learners_table.column(0);
+            var column = all_learners_table.columns('.column1');
             column.visible(false);
             var added_learners_table = $('#added_learners_table').DataTable();
-            var column = added_learners_table.column(0);
+            var column = added_learners_table.columns('.column1');
             column.visible(false);            
         }
         else {

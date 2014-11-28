@@ -188,7 +188,7 @@
                             <table id="all_learners_table" class="display">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th class="column1">Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Slug session</th>
@@ -196,7 +196,7 @@
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                        <th>Id</th>
+                                        <th class="column1">Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Slug session</th>
@@ -204,21 +204,21 @@
                                 </tfoot>
                                 <tbody>
                                     <tr id="learner_1">
-                                        <td>1</td>
+                                        <td class="column1">1</td>
                                         <td>Nom1</td>
                                         <td>Prénom1</td>
                                         <td>Certif lamp</td>
                                         <td><button type="button" class="btn btn-primary add" value="1">Ajouter</button></td>
                                     </tr>
                                     <tr id="learner_2">
-                                        <td>2</td>
+                                        <td class="column1">2</td>
                                         <td>Nom2</td>
                                         <td>Prénom2</td>
                                         <td>Certif lamp</td>
                                         <td><button type="button" class="btn btn-primary add" value="2">Ajouter</button></td>
                                     </tr>
                                     <tr id="learner_3">
-                                        <td>3</td>
+                                        <td class="column1">3</td>
                                         <td>Nom3</td>
                                         <td>Prénom3</td>
                                         <td>Dev</td>
@@ -230,7 +230,7 @@
                             <table id="added_learners_table" class="display">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th class="column1">Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Slug session</th>
@@ -239,7 +239,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Id</th>
+                                        <th class="column1">Id</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Slug session</th>
