@@ -7,11 +7,27 @@
         <link href="css/pages/admin.css" rel="stylesheet">
 <?php
     $endHeader = ob_get_clean();
+    var_dump($_POST);
+    if (isset($_POST['submit']) && ($_POST['submit'] == 'register')){
+        var_dump('heho');
+        require_once(APPLICATION_PATH . '/services/SessionService.php');
+        require_once(APPLICATION_PATH . '/mappers/SessionMapper.php');
+        require_once(APPLICATION_PATH . '/Db.php');
+        $db = new Db('mysql', 'localhost', 'project', 'project', '0000');
+        $db->getConnexion();
+        $sessionMapper = new SessionMapper($db);
+        $sessionService = new SessionService($sessionMapper);
+        $data = $sessionService->clean($_POST);
+        var_dump($data);
+        if ($data != FALSE){
+            $sessionService->save($data['title'], $data['slug'], $data['startDate'], $data['endDate']);
+        } 
+    }
 ?>
 
 <div class="container">
 	<div class="contenu">
-		<form class="form-horizontal">
+		<form class="form-horizontal" action="form_add_session" method="POST">
 			<fieldset>
 				<!-- Form Name -->
 				<legend>Création d'une nouvelle session</legend>
@@ -19,49 +35,49 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom session</label>
 					<div class="controls">
-						<input id="nom" name="nom" type="text"
-							placeholder="Ecrire le nom de  la session.." class="input-xlarge">
+						<input id="title" name="title" type="text"
+							placeholder="Entrez le nom de  la session" class="input-xlarge">
 					</div>
 				</div>
 				<!-- Text input-->
 				<div class="control-group">
 					<label class="control-label" for="tag">Slug</label>
 					<div class="controls">
-						<input id="tag" name="tag" type="text"
-							placeholder="Ecrire le slug" class="input-xlarge">
+						<input id="slug" name="slug" type="text"
+							placeholder="Entrez le slug" class="input-xlarge">
 					</div>
 				</div>
 				<!-- Select Basic -->
 				<div class="control-group">
-					<label class="control-label" for="jourD">Date de début</label>
+					<label class="control-label" for="startDay">Date de début</label>
 					<div class="controls">
-						<select id="jourD" name="jourD" class="input-mini">
+						<select id="startDay" name="startDay" class="input-mini">
 							<option value="0">--</option>
 		              <?php for($i=1;$i<32;$i++){echo "<option value=\"$i\">$i</option> ";}?>
-                    </select> <select id="moisD" name="moisD"
-							class="input-mini">
+            </select> 
+            <select id="startMonth" name="startMonth" class="input-mini">
 							<option value="0">--</option>
 	                    <?php for($i=1;$i<13;$i++){echo "<option value=\"$i\">$i</option> ";}?>
-                    </select> <select id="anneD" name="anneD"
-							class="input-mini">
+            </select> 
+            <select id="startYear" name="startYear" class="input-mini">
 							<option value="0">----</option>
                         <?php for($i=2000;$i<2016;$i++){echo "<option value=\"$i\">$i</option> ";}?>
-                    </select>
+            </select>
 					</div>
 				</div>
 				<!-- Select Basic -->
 				<div class="control-group">
-					<label class="control-label" for="jourFin">Date de Fin</label>
+					<label class="control-label" for="endDay">Date de Fin</label>
 					<div class="controls">
-						<select id="jourFin" name="jourFin" class="input-mini">
+						<select id="endDay" name="endDay" class="input-mini">
 							<option value="0">--</option>
 		                      <?php for($i=1;$i<32;$i++){echo "<option value=\"$i\">$i</option> ";}?>
                         </select> 
-                        <select id="moisFin" name="moisFin" class="input-mini">
+                        <select id="endMonth" name="endMonth" class="input-mini">
 							<option value="0">--</option>
 	                        <?php for($i=1;$i<13;$i++){echo "<option value=\"$i\">$i</option> ";}?>
                         </select>
-                        <select id="anneFin" name="anneFin" class="input-mini">
+                        <select id="endYear" name="endYear" class="input-mini">
 							<option value="0">----</option>
 	                        <?php for($i=2000;$i<2016;$i++){echo "<option value=\"$i\">$i</option> ";}?>
                          </select>
@@ -70,7 +86,7 @@
 				<!-- Button -->
 				<div class="control-group">
 					<div class="controls">
-						<button id="submit" name="submit" class="btn btn-primary btn-lg"
+						<button id="submit" name="submit" class="btn btn-primary btn-lg" value="register"
 							style="float: right;">Créer</button>
 					</div>
 				</div>

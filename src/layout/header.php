@@ -7,6 +7,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         
         <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
                 rel="stylesheet">

@@ -1,4 +1,20 @@
 <?php
+
+defined('DS')
+|| define('DS', DIRECTORY_SEPARATOR);
+defined('ROOT_PATH')
+|| define('ROOT_PATH', dirname(dirname(__DIR__)));
+defined('SRC_PATH')
+|| define('SRC_PATH', ROOT_PATH . DS . 'src');
+
+// Define path to application directory
+defined('APPLICATION_PATH')
+|| define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+
+/*// Define application environment
+defined('APPLICATION_ENV')
+|| define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));*/
+
 if (! isset($_SESSION)) {
     session_start();
 }
