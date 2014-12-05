@@ -16,8 +16,6 @@
 <?php
     $endHeader = ob_get_clean();
  ?>
- 
-?>
 
 <div class="container">
 	<div class="contenu">

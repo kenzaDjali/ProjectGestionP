@@ -66,7 +66,7 @@ class SessionService
     
     public function clean($data){
         $cleanData = array();
-        
+        // récupération des données
         $title = $data['title'];
         $slug = $data['slug'];
         $startDay = $data['startDay'];
@@ -76,11 +76,55 @@ class SessionService
         $endMonth = $data['endMonth'];
         $endYear = $data['endYear'];
         
+        $errors = array();
+        
+        $result = $this->cleanTitle($title);
+        if ($result != TRUE){
+            $errors['title'] = $result;
+        }
+        
+        $result = $this->cleanSlug($slug);
+        if ($result != TRUE){
+            $errors['slug'] = $result;
+        }
+                
+        $result = $this->cleanDate($startDay, $startMonth, $startYear);
+        if ($result != TRUE){
+            $errors['startEnd'] = $result;
+        }
+        
+        $result = $this->cleanDate($endDay, $endMonth, $endYear);
+        if ($result != TRUE){
+            $errors['endDate'] = $result;
+        }
+        
+        // renvoi des données correctes
         $cleanData['title'] = $title;
         $cleanData['slug'] = $slug;
         $cleanData['startDate'] = $startYear . '-' . $startMonth . '-' . $startDay;
         $cleanData['endDate'] = $endYear . '-' . $endMonth . '-' . $endDay;
         
         return $cleanData;
+    }
+
+    public function cleanTitle($title){
+        if (true){
+        
+        }
+        return TRUE;    
+    }    
+    
+    public function cleanSlug($slug){
+        if (true){
+            
+        }
+        return TRUE;
+    }
+    
+    public function cleanDate($day, $month, $year){
+        if (true){
+        
+        }
+        return TRUE;        
     }
 }

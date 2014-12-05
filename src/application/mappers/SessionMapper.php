@@ -53,13 +53,10 @@ class SessionMapper
      * @param Session $session
      * @return boolean
      */
-    public function save(Session $session){
-        var_dump($session);
-        $row = $this->objectToRow($session);    // à virer ensuite : il est ci-dessous
-        var_dump($row);
+    public function save(Session $session)
+    {
         if ((int)$session->getId() === 0){     
             // insertion      
-            // $row[id] == null ?
             $sql = "INSERT INTO sessions VALUES (null, :title, 
                 :slug, :start_date, :end_date)";
         } else {
