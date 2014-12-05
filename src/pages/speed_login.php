@@ -12,7 +12,7 @@
 <div class="fun-cube"></div>
 <!-- heirarchy: #cuboid > form > div*4(cuboid faces) -->
 <div id="cuboid">
-	<form>
+	<form id ="form1" method ="POST" action ="">
 		<!-- #1 hover button -->
 		<div>
 			<p class="cuboid-text">Connexion Rapide</p>
@@ -23,9 +23,9 @@
 			<label for="submit" class="submit-icon">
 				<i class="fa fa-chevron-right"></i>
 			</label>
-			<input type="text" id="password" class="cuboid-text" placeholder="Votre code secret" autocomplete="off"/>
+			<input type="text" id="password" name ="code" class="cuboid-text" placeholder="Votre code secret" autocomplete="off"/>
 			<!-- hidden submit button -->
-			<input type="submit" id="submit" />
+			<button  type="submit" id="submit"></button>
 		</div>
 		<!-- #3 loading message -->
 		<div>
@@ -42,8 +42,8 @@
 
     <!-- jQuery -->
     <script src="http://thecodeplayer.com/u/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="assets/jquery/dist/jquery.min.js"></script>
+	<script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="js/speed_login.js"></script>
 </body>
 </html>

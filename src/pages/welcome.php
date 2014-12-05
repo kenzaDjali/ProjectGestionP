@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION)) {
-    if (! isset($_SESSION['role_id'])) {
+    if (!isset($_SESSION['role_id'])) {
         header('location:/');
     }
 }
@@ -11,10 +11,13 @@ $roles = array(
     '4' => 'Administrateur'
 );
 
-// TODO: Test quel utilisateur est ? apprenant, secretaire, formateur
+// Test quel utilisateur est ? apprenant, secretaire, formateur ou admin
 
 if (isset($_SESSION['role_id'])) {
     if (key_exists($_SESSION['role_id'], $roles)) {
+        
+       
+        
         $role_id = $_SESSION['role_id'];
         switch ($role_id) {
             case '1':

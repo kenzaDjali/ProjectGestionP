@@ -1,3 +1,11 @@
+<?php 
+if (isset($_SESSION)) {
+    if (!isset($_SESSION['role_id'])) {
+        header('location:/');
+    }
+}
+
+?>
 <div class="container">
 	<div class="contenu">
 		<form class="form-horizontal">

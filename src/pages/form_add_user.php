@@ -1,7 +1,8 @@
 <?php 
-if(!isset($_SESSION)) {
-    session_start();
-    var_dump($_SESSION);
+if (isset($_SESSION)) {
+    if (!isset($_SESSION['role_id'])) {
+        header('location:/');
+    }
 }
 //TODO: Changer le type de téléphone,
 //TODO:  Tester que la selection n'a pas dépsser 1->4
@@ -32,7 +33,7 @@ if(!isset($_SESSION)) {
                     <div class="control-group">
                         <label class="control-label" for="first_name">Prénom</label>
                         <div class="controls">
-                            <input id="first_name" name="first_name" type="text" placeholder="Entre le prénom" class="input-xlarge" required="">
+                            <input id="first_name" name="first_name" type="text" placeholder="Entrez le prénom" class="input-xlarge" required="">
                         </div>
                     </div>
                     
@@ -77,7 +78,7 @@ if(!isset($_SESSION)) {
                     <div class="control-group">
                         <label class="control-label" for="phone_number">Numéro de téléphone</label>
                         <div class="controls">
-                            <input id="phone_number" name="phone_number" type="text" placeholder="Entre un numéro de téléphone fixe" class="input-xlarge">
+                            <input id="phone_number" name="phone_number" type="text" placeholder="Entrez un numéro de téléphone fixe" class="input-xlarge">
                         </div>
                     </div>
                 
