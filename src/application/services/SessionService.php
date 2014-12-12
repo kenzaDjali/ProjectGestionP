@@ -29,6 +29,7 @@ class SessionService
     
     public function fetchAll(){
         $sessions = $this->sessionMapper->fetchAll();
+        return $sessions;
 /*        
         $response = array('data' => array());
         foreach($sessions as $session){
@@ -125,7 +126,7 @@ class SessionService
         if (!isset($errors['startDate']) && !isset($errors['endDate'])){
             $result = $this->cleanDates($cleanData['startDate'], $cleanData['endDate']);
             if ($result[0] == false){
-                
+                $errors['endDate'] = $result[1];
             }
         }
         
@@ -192,7 +193,13 @@ class SessionService
     }
     
     public function cleanDates($startDate, $endDate){
-        
+        list($year1, $month1, $day1) = explode('-', $startDate);
+        list($year2, $month2, $day2) = explode('-', $endDate);
+        if (mktime(0, 0, 0, $month1, $day1, $year1) < mktime(0, 0, 0, $month2, $day2, $year2)){
+            return array(true);
+        } else {
+            return array(false, 'La date de fin de session est antérieure à la date de début.');
+        }
     }
     
 }

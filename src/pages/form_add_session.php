@@ -9,6 +9,7 @@
     $endHeader = ob_get_clean();
     
     if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
+        var_dump($_POST);
         require_once (APPLICATION_PATH . '/services/SessionService.php');
         require_once (APPLICATION_PATH . '/mappers/SessionMapper.php');
         require_once (APPLICATION_PATH . '/Db.php');
@@ -17,10 +18,13 @@
         $sessionMapper = new SessionMapper($db);
         $sessionService = new SessionService($sessionMapper);
         $result = $sessionService->clean($_POST);
-        //var_dump($result);
+        var_dump($result);
         if ($result[0] != false) {
             $cleanData = $result[1]; 
+            var_dump($cleanData);
             $sessionService->save($cleanData);
+            var_dump("fin");
+            //header("Location: list_sessions");
         } else {
             $errors = $result[1];
             $someCleanData = $result[2];
@@ -40,7 +44,7 @@
 					<label class="control-label" for="title">Nom de la session</label>
 					<div class="controls">
 						<input id="title" name="title" type="text"
-                            <?php if (isset($_POST) && $_POST['submit'] == 'register'){ ?>
+                            <?php if (!empty($_POST) && $_POST['submit'] == 'register'){ ?>
 						          value="<?= isset($errors['title'])? $_POST['title']: $someCleanData['title']; ?>"
 						    <?php } else { ?>
 						          placeholder="Entrez le nom de  la session"
@@ -60,7 +64,7 @@
 					<label class="control-label" for="slug">Slug</label>
 					<div class="controls">
 						<input id="slug" name="slug" type="text"
-						    <?php if (isset($_POST) && $_POST['submit'] == 'register'){ ?>
+						    <?php if (!empty($_POST) && $_POST['submit'] == 'register'){ ?>
 						          value="<?= isset($errors['slug'])? $_POST['slug']: $someCleanData['slug']; ?>"
 						    <?php } else { ?>
 						          placeholder="Entrez le slug de  la session"
@@ -82,7 +86,7 @@
 						<select id="startDay" name="startDay" class="input-mini">
 							<option value="0">--</option>
                             <?php 
-                                if (isset($_POST) && $_POST['submit'] == 'register'){
+                                if (!empty($_POST) && $_POST['submit'] == 'register'){
                                     $startDay = (int) $_POST['startDay'];
                                 } else {
                                     $startDay = 0;
@@ -98,7 +102,7 @@
                         </select> <select id="startMonth" name="startMonth" class="input-mini">
                             <option value="0">--</option>
                             <?php 
-                                if (isset($_POST) && $_POST['submit'] == 'register'){
+                                if (!empty($_POST) && $_POST['submit'] == 'register'){
                                     $startMonth = (int) $_POST['startMonth'];
                                 } else {
                                     $startMonth = 0;
@@ -115,7 +119,7 @@
                         <select id="startYear" name="startYear" class="input-mini">
                             <option value="0">----</option>
                             <?php 
-                                if (isset($_POST) && $_POST['submit'] == 'register'){
+                                if (!empty($_POST) && $_POST['submit'] == 'register'){
                                     $startYear = (int) $_POST['startYear'];
                                 } else {
                                     $startYear = 0;
