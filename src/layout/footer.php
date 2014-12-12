@@ -20,8 +20,6 @@
         <!-- Tooltip Boostrap -->
         <script language="javascript" type="text/javascript" src="assets/bootstrap/js/tooltip.js"></script>
         <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>        
-        <script language="javascript" type="text/javascript" src="js/pages/teacher.js"></script>
-        <script language="javascript" type="text/javascript" src="js/pages/teacher_session.js"></script>      
         <script src='assets/moment/min/moment.min.js'></script>
         <script src='assets/fullcalendar/dist/fullcalendar.min.js'></script>  
         

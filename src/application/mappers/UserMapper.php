@@ -68,8 +68,8 @@ class UserMapper
         // Nouvelle enregistrement ?
         if (0 === (int) $user->getId()) {
             $sql = "INSERT INTO users
-               (first_name, last_name, email, password,role,cell_phone_number,phone_number,code)
-               VALUES (:first_name, :last_name, :email, :password, :role, :cell_phone_number, :phone_number, :code)";
+               (id,first_name, last_name, email, password,role,cell_phone_number,phone_number,code)
+               VALUES (:id, :first_name, :last_name, :email, :password, :role, :cell_phone_number, :phone_number, :code)";
             // ou enregistrement exsitant
         } else {
             $sql = "UPDATE users

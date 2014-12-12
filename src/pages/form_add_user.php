@@ -15,12 +15,12 @@ if (isset($_SESSION)) {
             <form class="form-horizontal" action="" method="POST">
                 <fieldset>
                     <hr />
-                    <!-- Form Name -->
+                    
                     <h3>Formulaire de saisie d'un utilisateur
                    </h3>
                     <hr />
                    
-                    <!-- Text input-->
+                    
                     <div class="control-group">
                         <label class="control-label" for="last_name">Nom</label>
                         <div class="controls">
@@ -28,7 +28,7 @@ if (isset($_SESSION)) {
                         </div>
                     </div>
                     
-                    <!-- Text input-->
+                    
                     <div class="control-group">
                         <label class="control-label" for="first_name">Prénom</label>
                         <div class="controls">
@@ -36,7 +36,7 @@ if (isset($_SESSION)) {
                         </div>
                     </div>
                     
-                    <!-- Text input-->
+                   
                     <div class="control-group">
                         <label class="control-label" for="email">Email</label>
                         <div class="controls">
@@ -44,7 +44,7 @@ if (isset($_SESSION)) {
                         </div>
                     </div>
                     
-                    <!-- Text input-->
+                    
                     <div class="control-group">
                         <label class="control-label" for="password">Mot de passe</label>
                         <div class="controls">
@@ -52,7 +52,7 @@ if (isset($_SESSION)) {
                         </div>
                     </div>
                     
-                    <!-- Select Basic -->
+                   
                     <div class="control-group">
                           <label class="control-label" for="selectbasic">Role</label>
                           <div class="controls">
@@ -65,23 +65,23 @@ if (isset($_SESSION)) {
                          </div>
                     </div>
                     
-                    <!-- Text input-->
+                    
                     <div class="control-group">
                         <label class="control-label" for="cell_phone_number">Numéro de téléphone portable</label>
                         <div class="controls">
-                            <input id="cell_phone_number" name="cell_phone_number" type="text" placeholder="Entrez un numéro de téléphone portable" class="input-xlarge">
+                            <input id="cell_phone_number" name="cell_phone_number" type="text" placeholder="Entrez un numéro de téléphone portable" class="input-xlarge" required="">
                         </div>
                     </div>
                     
-                    <!-- Text input-->
+                    
                     <div class="control-group">
                         <label class="control-label" for="phone_number">Numéro de téléphone</label>
                         <div class="controls">
-                            <input id="phone_number" name="phone_number" type="text" placeholder="Entrez un numéro de téléphone fixe" class="input-xlarge">
+                            <input id="phone_number" name="phone_number" type="text" placeholder="Entrez un numéro de téléphone fixe" class="input-xlarge" required="">
                         </div>
                     </div>
                 
-                    <!-- Button (Double) -->
+                    
                     <div class="control-group double">
                         <label class="control-label" for="submit"></label>
                         <div class="controls">

@@ -1,5 +1,7 @@
 <?php
     $title = "Formateur - session";
+    $endFooter =' <script language="javascript" type="text/javascript" src="js/pages/teacher.js"></script>
+        <script language="javascript" type="text/javascript" src="js/pages/teacher_session.js"></script>  ';
 ?>
         <div class="container">
             <div class="row" id="sessions_list">
