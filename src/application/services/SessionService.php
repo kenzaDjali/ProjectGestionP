@@ -15,6 +15,8 @@ class SessionService
     
     public function find($id){
         $session = $this->sessionMapper->find($id);
+        return $session;
+        
 /*        
         $result = array(
             'id' => $session->getId(),

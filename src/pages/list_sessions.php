@@ -22,7 +22,16 @@
         <div class="container">
         	<div class="contenu">
         		<hr>
-        		<h2>Liste des sessions</h2>
+        		<h2>Liste des sessions</h2><br><br>
+        		<!-- 
+        		<div><a class="btn btn-success" href="form_add_session">Créer une nouvelle session</a></div><br>
+        		<div id="errors">
+        		<?php /*if (isset($_GET['err'])){
+        		    if ($_GET['err'] == 1){
+        		        echo "L'identifiant de session choisi n'est pas valide.";
+        		    }
+        		}*/?>
+        		</div> -->
         		<table id="myTableSessions" class="display">
                     <thead>
                         <tr>
@@ -65,7 +74,7 @@
 
 
 <?php
-ob_start();
+    ob_start();
 ?>
 <script type="text/javascript"
 	src="assets/datatables/media/js/jquery.dataTables.min.js"></script>

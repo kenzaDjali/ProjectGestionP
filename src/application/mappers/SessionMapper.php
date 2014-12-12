@@ -68,6 +68,7 @@ class SessionMapper
                     end_date = :end_date 
                 WHERE id = :id;";            
         }
+        var_dump($sql);
         $stmt = $this->dbAdapter->prepare($sql);
         $row = $this->objectToRow($session);
         return (bool) $stmt->execute($row);
