@@ -1,5 +1,5 @@
 <?php
-require_once '../db/user.php';
+
 require_once '../application/mappers/UserMapper.php';
 require_once '../application/services/UserService.php';
 require_once '../application/Db.php';
@@ -19,7 +19,6 @@ if (isset($_POST['submit']) && ! empty($_POST)) {
     $userService = new UserService($userMapper);
     
     $user =$userService->login($_POST['email'], $_POST['password'], $_POST['code']);
-    var_dump($user);
     if (! empty($user)) {
         if (key_exists($user[0]['role'], $roles)) {
             session_start();

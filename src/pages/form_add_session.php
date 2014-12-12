@@ -6,8 +6,7 @@ if (isset($_SESSION)) {
 }
 
 ?>
-<div class="container">
-	<div class="contenu">
+<div class="container" style="background-color: #FFF">
 		<form class="form-horizontal">
 			<fieldset>
 				<!-- Form Name -->
@@ -73,5 +72,4 @@ if (isset($_SESSION)) {
 				</div>
 			</fieldset>
 		</form>
-	</div>
 </div>

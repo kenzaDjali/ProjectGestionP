@@ -41,8 +41,8 @@
                     <ul class="mainnav">
                         <li class="active"><a href="welcome"><i class="icon-dashboard"></i><span>Tableau de Bord</span> </a> </li>
                         <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='4'){ ?>
-                         <li><a href="form_add_user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
-                        <li><a href="form_add_session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>                                                      
+                         <li><a href="user"><i class="icon-group"></i><span>Liste utilisateurs</span> </a></li>
+                        <li><a href="session"><i class="icon-list"></i><span>Liste des sessions</span> </a> </li>                                                      
                        <?php }?>
                        <?php if (isset($_SESSION['role_id'])&& $_SESSION['role_id']=='1'){ ?>
                         <li><a href="form_learner"><i class="icon-user"></i><span>Pointeuse</span> </a> </li>

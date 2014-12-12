@@ -7,8 +7,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         
         <link href="css/bootstrap.min.css" rel="stylesheet">
-       <!--  <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
+        <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet"> -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
                 rel="stylesheet">
         <link href="css/font-awesome.css" rel="stylesheet">
@@ -30,10 +30,18 @@
 		<!-- pour l'admin -->
         <link href="css/pages/admin.css" rel="stylesheet">
 
-
+        <!-- calenderie -->
+        <link href='assets/fullcalendar/dist/fullcalendar.css' rel='stylesheet' />
+        <link href='assets/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print' />
+        
+        <?php if (isset($endHeader)){
+            echo $endHeader;
+        }?>
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
+            
+       
     </head>
     <body>
