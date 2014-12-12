@@ -48,15 +48,16 @@ class SessionService
 */        
     }
     
-    public function save($title, $slug, $startDate, $endDate, $id = 0){
+    public function save($data){
         $session = new Session();
-        if ((int) $id !== 0){
+        if (isset($data['id'])){
             $session->setId($id);
         }
-        $session->setTitle($title)
-                ->setSlug($slug)
-                ->setStartDate($startDate)
-                ->setEndDate($endDate);
+        $session->setTitle($data['title'])
+                ->setSlug($data['slug'])
+                ->setStartDate($data['startDate'])
+                ->setEndDate($data['endDate']);
+        var_dump($session);
         return $this->sessionMapper->save($session);
     }
     
@@ -66,7 +67,12 @@ class SessionService
     
     public function clean($data){
         $cleanData = array();
+        $errors = array();
+        
         // récupération des données
+        if (isset($data['id'])){
+            $id = $data['id'];
+        }
         $title = $data['title'];
         $slug = $data['slug'];
         $startDay = $data['startDay'];
@@ -76,55 +82,117 @@ class SessionService
         $endMonth = $data['endMonth'];
         $endYear = $data['endYear'];
         
-        $errors = array();
+        // nettoyage des données 
+        // et récupération soit de l'erreur rencontrée
+        // soit de la donnée nettoyée 
+        if (isset($id)){
+            $result = $this->cleanId($id);
+            if ($result[0] == false){
+                $errors['id'] = $result[1];
+            } else {
+                $cleanData['id'] = $result[1];
+            }
+        }  
         
         $result = $this->cleanTitle($title);
-        if ($result != TRUE){
-            $errors['title'] = $result;
-        }
+        if ($result[0] == false){
+            $errors['title'] = $result[1];
+        } else {
+            $cleanData['title'] = $result[1];
+        }   
         
         $result = $this->cleanSlug($slug);
-        if ($result != TRUE){
-            $errors['slug'] = $result;
-        }
+        if ($result[0] == false){
+            $errors['slug'] = $result[1];
+        } else {
+            $cleanData['slug'] = $result[1];
+        }   
                 
         $result = $this->cleanDate($startDay, $startMonth, $startYear);
-        if ($result != TRUE){
-            $errors['startEnd'] = $result;
-        }
+        if ($result[0] == false){
+            $errors['startDate'] = $result[1];
+        } else {
+            $cleanData['startDate'] = $result[1];
+        }   
         
         $result = $this->cleanDate($endDay, $endMonth, $endYear);
-        if ($result != TRUE){
-            $errors['endDate'] = $result;
+        if ($result[0] == false){
+            $errors['endDate'] = $result[1];
+        } else {
+            $cleanData['endDate'] = $result[1];
+        }   
+        
+        if (!isset($errors['startDate']) && !isset($errors['endDate'])){
+            $result = $this->cleanDates($cleanData['startDate'], $cleanData['endDate']);
+            if ($result[0] == false){
+                
+            }
         }
         
-        // renvoi des données correctes
-        $cleanData['title'] = $title;
-        $cleanData['slug'] = $slug;
-        $cleanData['startDate'] = $startYear . '-' . $startMonth . '-' . $startDay;
-        $cleanData['endDate'] = $endYear . '-' . $endMonth . '-' . $endDay;
         
-        return $cleanData;
+        // renvoi des erreurs s'il y en a
+        if (!empty($errors)){
+            return array(false, $errors, $cleanData);
+        } else {
+        // ou des données nettoyées            
+            return array(true, $cleanData);            
+        }
     }
 
-    public function cleanTitle($title){
-        if (true){
-        
+    public function cleanId($id){
+        if (is_numeric($id) && ((int)$id != 0)){
+            array(true, (int)$id);
+        } else {
+            array(false, 'Il y a un problème avec l\'identifiant');
         }
-        return TRUE;    
+    }
+    
+    
+    public function cleanTitle($title){
+        $title = trim($title);
+        
+        if (strlen($title) < 14){
+            return array(false, 'Le titre doit comporter au moins 15 caractères.');
+        }
+        $pattern = '/^[0-9a-zA-Z- éèùçà]*$/';
+        if (!preg_match($pattern, $title)){
+            return array(false, 'Le titre de la session ne peut comporter que des caractères '
+                . 'alphanumériques, le tiret et l\'espace');
+        }
+        return array(true, $title);    
     }    
     
     public function cleanSlug($slug){
-        if (true){
-            
+        $slug = trim($slug);
+        
+        $slug = mb_strtolower($slug, 'UTF-8');
+        
+        if (mb_strlen($slug, 'UTF-8') < 9){
+            return array(false, 'Le slug doit comporter au moins 10 caractères.');
         }
-        return TRUE;
+        
+        $pattern = '/^([0-9a-zéèàùç]+[-]?)+$/';
+        if (!preg_match($pattern, $slug)){
+            return array(false, 'Le slug de la session ne peut comporter que des caractères '
+                . 'alphanumériques et le tiret ; il ne doit pas comporter d\'espace');
+        }
+        
+        return array(true, $slug);
     }
     
     public function cleanDate($day, $month, $year){
-        if (true){
-        
+        if (is_numeric($day) && is_numeric($month) && is_numeric($year)){
+            if (checkdate($month, $day, $year)){
+                $date = $year . '-' . $month . '-' . $day;
+                return array(true, $date);
+            } 
+            return array(false, 'La date choisie n\'est pas valide.');        
         }
-        return TRUE;        
+        return array(false, 'Le jour, le mois et l\'année doivent être des entiers.');
     }
+    
+    public function cleanDates($startDate, $endDate){
+        
+    }
+    
 }

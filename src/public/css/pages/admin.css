@@ -3,3 +3,7 @@
 .double {
 	float: right;
 }
+
+.error {
+	color: red;
+}
