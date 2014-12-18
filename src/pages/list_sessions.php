@@ -1,5 +1,5 @@
 <?php
-    $title = "Admin";
+    $title = "Liste des sessions";
     
     ob_start();
 ?>
@@ -8,15 +8,6 @@
         	rel="stylesheet">
 <?php
     $endHeader = ob_get_clean();
-    require_once (APPLICATION_PATH . '/services/SessionService.php');
-    require_once (APPLICATION_PATH . '/mappers/SessionMapper.php');
-    require_once (APPLICATION_PATH . '/Db.php');
-    $db = new Db('mysql', 'localhost', 'project', 'project', '0000');
-    $db->getConnexion();
-    $sessionMapper = new SessionMapper($db);
-    $sessionService = new SessionService($sessionMapper);
-    $sessions = $sessionService->fetchAll();
-    
 ?>
 
         <div class="container">
@@ -55,21 +46,6 @@
         					<th>Actions</th>        					
                         </tr>
                     </tfoot>                    
-                    <tbody>
-                    <?php foreach($sessions as $session) {?>
-                        <tr>
-                            <td><?= $session->getId();?></td>
-        				    <td><?= $session->getTitle();?></td>
-        					<td><?= $session->getSlug();?></td>
-        					<td><?= $session->getStartDate();?></td>
-        					<td><?= $session->getEndDate();?></td>
-        					<td>
-        					   <a class="btn btn-primary" href="form_add_session?id=<?= $session->getId(); ?>">Editer</a>
-        					   <button class="btn btn-danger" id="<?= $session->getId(); ?>">Supprimer</button>
-        					</td>
-                        </tr>
-                    <?php }?>
-                    </tbody>
                 </table>
             </div>
         </div>

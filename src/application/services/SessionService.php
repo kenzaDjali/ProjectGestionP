@@ -31,8 +31,8 @@ class SessionService
     
     public function fetchAll(){
         $sessions = $this->sessionMapper->fetchAll();
-        return $sessions;
-/*        
+        //return $sessions;
+        
         $response = array('data' => array());
         foreach($sessions as $session){
             $response['data'][] = array( 
@@ -41,14 +41,12 @@ class SessionService
                 $line[] = $session->getSlug(),
                 $line[] = $session->getStartDate(),
                 $line[] = $session->getEndDate(),
-                $line[] = '<a href="#" data-id="' . $session->getId() 
-                         . '" data-action="edit"><i class="glyphicon glyphicon-pencil"></i></a>'
-                         . '<a href="#" data-id="' . $session->getId(). '" data-action="delete">'
-                         . '<i class="glyphicon glyphicon-remove-circle"></i></a>'
+                $line[] = '<a class="btn btn-primary" href="form_add_session?id=' . $session->getId() . '">Editer</a>'
+                          . '<button class="btn btn-danger" id="' . $session->getId() . '">Supprimer</button>'                         
             );
         }
         return json_encode($response);
-*/        
+        
     }
     
     public function save($data){
@@ -70,7 +68,7 @@ class SessionService
         if ($result) {
             $data = array(
                 "code" => 1,
-                "message" => "La session " . $session->getTitle() . " a été supprimée !"
+                "message" => "La session '" . $session->getTitle() . "' a été supprimée !"
             );
         } else {
             $data = array(

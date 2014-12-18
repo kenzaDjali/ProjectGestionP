@@ -1,7 +1,9 @@
 $(document).ready(function(){
-	$('#myTableSessions').DataTable();
+	$('#myTableSessions').dataTable({
+		ajax: 'ajax?object=session&action=loadSessions'
+	});
 	
-	$('button').on('click', function(){
+	$('table').delegate('button', 'click', function(){
 		var id = $(this).attr('id');
         $.ajax('ajax?object=session&action=delete&id=' + id)
         .done(function(result){
@@ -25,7 +27,11 @@ $(document).ready(function(){
         	// récupération du message
         	$('#errors').text(obj.message)
         				.css('color', color);
-        	$('#myTableSessions').DataTable();
+        	
+        	// rechargement de la liste de sessions
+        	var table = new $.fn.dataTable.Api('#myTableSessions');
+			table.ajax.reload();
+        	
         });
 	});	
 }); 
