@@ -53,19 +53,32 @@ class SessionService
     
     public function save($data){
         $session = new Session();
-        if (isset($data['id'])){
-            $session->setId($id);
+        if (isset($data['id']) && !empty($data['id'])){
+            $session->setId($data['id']);
         }
         $session->setTitle($data['title'])
                 ->setSlug($data['slug'])
                 ->setStartDate($data['startDate'])
                 ->setEndDate($data['endDate']);
-        var_dump($session);
+        
         return $this->sessionMapper->save($session);
     }
     
     public function delete($id){
-        return $this->sessionMapper->delete($id);
+        $session = $this->sessionMapper->find($id);
+        $result = $this->sessionMapper->delete($id);
+        if ($result) {
+            $data = array(
+                "code" => 1,
+                "message" => "La session " . $session->getTitle() . " a été supprimée !"
+            );
+        } else {
+            $data = array(
+                "code" => 2,
+                "message" => "La session n'a pas pu être supprimée."
+            );
+        }
+        return $data;
     }
     
     public function clean($data){
@@ -73,7 +86,7 @@ class SessionService
         $errors = array();
         
         // récupération des données
-        if (isset($data['id'])){
+        if (isset($data['id']) && !empty($data['id'])){
             $id = $data['id'];
         }
         $title = $data['title'];
@@ -144,9 +157,9 @@ class SessionService
 
     public function cleanId($id){
         if (is_numeric($id) && ((int)$id != 0)){
-            array(true, (int)$id);
+            return array(true, (int)$id);
         } else {
-            array(false, 'Il y a un problème avec l\'identifiant');
+            return array(false, 'Il y a un problème avec l\'identifiant');
         }
     }
     
@@ -159,8 +172,8 @@ class SessionService
         }
         $pattern = '/^[0-9a-zA-Z- éèùçà]*$/';
         if (!preg_match($pattern, $title)){
-            return array(false, 'Le titre de la session ne peut comporter que des caractères '
-                . 'alphanumériques, le tiret et l\'espace');
+            return array(false, 'Le titre ne peut comporter que des caractères '
+                . 'alphanumériques, le tiret et l\'espace.');
         }
         return array(true, $title);    
     }    
@@ -176,8 +189,8 @@ class SessionService
         
         $pattern = '/^([0-9a-zéèàùç]+[-]?)+$/';
         if (!preg_match($pattern, $slug)){
-            return array(false, 'Le slug de la session ne peut comporter que des caractères '
-                . 'alphanumériques et le tiret ; il ne doit pas comporter d\'espace');
+            return array(false, 'Le slug ne peut comporter que des caractères '
+                . 'alphanumériques et le tiret ; il ne doit pas comporter d\'espace.');
         }
         
         return array(true, $slug);

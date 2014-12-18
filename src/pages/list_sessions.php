@@ -3,9 +3,9 @@
     
     ob_start();
 ?>
-<!-- pour l'admin -->
-<link href="assets/datatables/media/css/jquery.dataTables.min.css"
-	rel="stylesheet">
+        <!-- pour l'admin -->
+        <link href="assets/datatables/media/css/jquery.dataTables.min.css"
+        	rel="stylesheet">
 <?php
     $endHeader = ob_get_clean();
     require_once (APPLICATION_PATH . '/services/SessionService.php');
@@ -23,15 +23,17 @@
         	<div class="contenu">
         		<hr>
         		<h2>Liste des sessions</h2><br><br>
-        		<!-- 
+        		
         		<div><a class="btn btn-success" href="form_add_session">Créer une nouvelle session</a></div><br>
         		<div id="errors">
-        		<?php /*if (isset($_GET['err'])){
-        		    if ($_GET['err'] == 1){
-        		        echo "L'identifiant de session choisi n'est pas valide.";
-        		    }
-        		}*/?>
-        		</div> -->
+<?php 
+    if (isset($_GET['err'])){
+        if ((int)$_GET['err'] === 1){
+            echo "L'identifiant de session choisi n'est pas valide.";
+        }
+    }
+?>
+        		</div><br><br>
         		<table id="myTableSessions" class="display">
                     <thead>
                         <tr>
@@ -40,7 +42,7 @@
         					<th>Slug</th>
         					<th>Date de début</th>
         					<th>Date de fin</th>
-        					<th></th>
+        					<th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -50,7 +52,7 @@
         					<th>Slug</th>
         					<th>Date de début</th>
         					<th>Date de fin</th>
-        					<th></th>        					
+        					<th>Actions</th>        					
                         </tr>
                     </tfoot>                    
                     <tbody>
@@ -63,7 +65,7 @@
         					<td><?= $session->getEndDate();?></td>
         					<td>
         					   <a class="btn btn-primary" href="form_add_session?id=<?= $session->getId(); ?>">Editer</a>
-        					   <button class="btn btn-danger" name="" id="">Supprimer</button>
+        					   <button class="btn btn-danger" id="<?= $session->getId(); ?>">Supprimer</button>
         					</td>
                         </tr>
                     <?php }?>
@@ -76,13 +78,9 @@
 <?php
     ob_start();
 ?>
-<script type="text/javascript"
-	src="assets/datatables/media/js/jquery.dataTables.min.js"></script>
-<script>
-        $(document).ready(function(){
-            $('#myTableSessions').DataTable();
-        }); 
-    </script>
+        <script type="text/javascript"
+	       src="assets/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/pages/list_sessions.js"></script>
 
 <?php 
     $endFooter = ob_get_clean();

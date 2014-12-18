@@ -1,5 +1,11 @@
 <?php
     $title = "Admin - création de session";
+    $action = 'create';
+    if (isset($_GET['id']) ||
+            (!empty($_POST) && ($_POST['action'] == 'update'))){
+        $title = "Admin - modification de session";
+        $action = 'update';
+    }
     
     ob_start();
 ?>
@@ -7,7 +13,6 @@
         <link href="css/pages/admin.css" rel="stylesheet">
 <?php
     $endHeader = ob_get_clean();
-    $action = "create";
     
     if (isset($_GET['id']) || isset($_POST['submit'])){
         
@@ -22,10 +27,9 @@
     
     if (isset($_GET['id'])){
         
-        $action = "update";
         $id = (int) $_GET['id'];
         $session = $sessionService->find($id);
-        var_dump($session);
+        
         // si la session définit par l'id existe et qu'on n'est pas en POST
         if (!isset($_POST['submit']) && !empty($session)){
             // on récupère les données de la session à mettre à jour
@@ -35,15 +39,6 @@
             $slug = $session->getSlug();
             list($startYear, $startMonth, $startDay) = explode('-', $session->getStartDate());
             list($endYear, $endMonth, $endDay) = explode('-', $session->getendDate());
-            var_dump($titleF . ' '
-                . $slug . ' '
-                . $startDay . ' '
-                . $startMonth . ' '
-                . $startYear . ' '
-                . $endDay . ' '
-                . $endMonth . ' '
-                . $endYear . ' '
-            );
         } else {
         // sinon, on ne garde pas l'id
             unset($id);
@@ -52,18 +47,17 @@
     }
     
     if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
-        var_dump($_POST);
 
         $result = $sessionService->clean($_POST);
-        var_dump($result);
+
         // si les données du POST étaient correctes
         if ($result[0] != false) {
             // on les récupère, les sauvegarde en BDD
             $cleanData = $result[1]; 
             $sessionService->save($cleanData);
-            var_dump($cleanData);
+            
             // et on redirige vers la liste de sessions
-            //header("Location: list_sessions");
+            header("Location: list_sessions");
         // si les données du POST n'étaient pas toutes correctes
         } else {
             // on récupère les erreurs 
@@ -72,7 +66,6 @@
             
             // et les données qui étaient correctes dans $id, $titleF, $slug, $startDate et $endDate
             // ou bien celles du POST 
-            var_dump($_POST);
             isset($data['id']) ? $id = $data['id'] : $id = $_POST['id'];
             isset($data['title']) ? $titleF = $data['title'] : $titleF = $_POST['title'];
             isset($data['slug']) ? $slug = $data['slug'] : $slug = $_POST['slug'];
@@ -101,10 +94,16 @@
 		<form class="form-horizontal" action="form_add_session" method="POST">
 			<fieldset>
 				<!-- Nom du formulaire -->
+<?php if ($action == 'create') {?>				
 				<legend>Saisie d'une nouvelle session</legend>
-
+<?php } else { ?>
+				<legend>Modification de la session</legend>
+<?php } ?>
+				<!-- Champ caché pour l'action  -->
+				<input type="hidden" name="action" value="<?= $action; ?>">				
+				
 				<!-- Champ caché pour l'éventuel identifiant  -->
-				<input type="hidden" value="<?= isset($id) ? $id : ''; ?>">
+				<input type="hidden" name="id" value="<?= isset($id) ? $id : ''; ?>">
 				
 				<!-- Saisie de texte pour le titre -->
 				<div class="control-group">
@@ -233,14 +232,26 @@
 					</div>                    
 				</div>
 				
+<?php
+    if ($action == 'create') {
+        $submit = 'Enregistrer la session';
+        $reset = 'Réinitialiser';
+    } else {
+        $submit = 'Modifier la session';
+        $reset = 'Annuler';        
+    }
+?>				
 				<!-- Boutons -->
 				<div class="control-group double">
                     <div class="controls">
 						<button id="submit" name="submit" class="btn btn-primary btn-lg"
-							value="register">
-							Enregistrer la session</button>
+							value="register"><?= $submit; ?></button>
+<?php if ($action == 'create') {?>							
 						<button id="reset" name="reset" class="btn btn-danger btn-lg"
-							value="cancel">Réinitialiser</button>
+							value="cancel"><?= $reset; ?></button>
+<?php } else { ?>
+                        <a class="btn btn-danger btn-lg" href="list_sessions"><?= $reset; ?></a>
+<?php } ?>
                     </div>
 				</div> 
 				
