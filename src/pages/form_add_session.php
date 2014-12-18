@@ -1,9 +1,9 @@
 <?php
-    $title = "Admin - création de session";
+    $title = "Création de session";
     $action = 'create';
     if (isset($_GET['id']) ||
             (!empty($_POST) && ($_POST['action'] == 'update'))){
-        $title = "Admin - modification de session";
+        $title = "Modification de session";
         $action = 'update';
     }
     
