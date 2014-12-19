@@ -111,7 +111,4 @@ class Session
         $this->end_date = $endDate;
         return $this;        
     }
-
-    
-    
 }

@@ -9,14 +9,15 @@ class SessionService
      */
     private $sessionMapper;
     
-    public function __construct(SessionMapper $sessionMapper){
+    public function __construct(SessionMapper $sessionMapper)
+    {
         $this->sessionMapper = $sessionMapper;
     }
     
-    public function find($id){
+    public function find($id)
+    {
         $session = $this->sessionMapper->find($id);
-        return $session;
-        
+        return $session;    
 /*        
         $result = array(
             'id' => $session->getId(),
@@ -29,7 +30,8 @@ class SessionService
 */        
     }
     
-    public function fetchAll(){
+    public function fetchAll()
+    {
         $sessions = $this->sessionMapper->fetchAll();
         //return $sessions;
         
@@ -46,10 +48,10 @@ class SessionService
             );
         }
         return json_encode($response);
-        
     }
     
-    public function save($data){
+    public function save($data)
+    {
         $session = new Session();
         if (isset($data['id']) && !empty($data['id'])){
             $session->setId($data['id']);
@@ -62,7 +64,8 @@ class SessionService
         return $this->sessionMapper->save($session);
     }
     
-    public function delete($id){
+    public function delete($id)
+    {
         $session = $this->sessionMapper->find($id);
         $result = $this->sessionMapper->delete($id);
         if ($result) {
@@ -79,7 +82,8 @@ class SessionService
         return $data;
     }
     
-    public function clean($data){
+    public function clean($data)
+    {
         $cleanData = array();
         $errors = array();
         
@@ -153,7 +157,8 @@ class SessionService
         }
     }
 
-    public function cleanId($id){
+    public function cleanId($id)
+    {
         if (is_numeric($id) && ((int)$id != 0)){
             return array(true, (int)$id);
         } else {
@@ -162,7 +167,8 @@ class SessionService
     }
     
     
-    public function cleanTitle($title){
+    public function cleanTitle($title)
+    {
         $title = trim($title);
         
         if (strlen($title) < 14){
@@ -176,7 +182,8 @@ class SessionService
         return array(true, $title);    
     }    
     
-    public function cleanSlug($slug){
+    public function cleanSlug($slug)
+    {
         $slug = trim($slug);
         
         $slug = mb_strtolower($slug, 'UTF-8');
@@ -194,7 +201,8 @@ class SessionService
         return array(true, $slug);
     }
     
-    public function cleanDate($day, $month, $year){
+    public function cleanDate($day, $month, $year)
+    {
         if (is_numeric($day) && is_numeric($month) && is_numeric($year)){
             if (checkdate($month, $day, $year)){
                 $date = $year . '-' . $month . '-' . $day;
@@ -205,7 +213,8 @@ class SessionService
         return array(false, 'Le jour, le mois et l\'année doivent être des entiers.');
     }
     
-    public function cleanDates($startDate, $endDate){
+    public function cleanDates($startDate, $endDate)
+    {
         list($year1, $month1, $day1) = explode('-', $startDate);
         list($year2, $month2, $day2) = explode('-', $endDate);
         if (mktime(0, 0, 0, $month1, $day1, $year1) < mktime(0, 0, 0, $month2, $day2, $year2)){
@@ -214,5 +223,4 @@ class SessionService
             return array(false, 'La date de fin de session est antérieure à la date de début.');
         }
     }
-    
 }

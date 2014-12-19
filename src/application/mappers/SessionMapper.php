@@ -4,13 +4,13 @@ require_once APPLICATION_PATH . '/models/Session.php';
 
 class SessionMapper
 {
-
     /**
      * @var Db
      */
     private $dbAdapter;
     
-    public function __construct($db){
+    public function __construct($db)
+    {
         $this->dbAdapter = $db->getConnexion();
     }
     
@@ -18,7 +18,8 @@ class SessionMapper
      * @param int $id 
      * @return boolean|Session
      */
-    public function find($id){
+    public function find($id)
+    {
         $sql = "SELECT * FROM sessions WHERE id = :id";
         $stmt = $this->dbAdapter->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -33,7 +34,8 @@ class SessionMapper
     /**
      * @return boolean|multitype:Session
      */
-    public function fetchAll(){
+    public function fetchAll()
+    {
         $sql = "SELECT * FROM sessions WHERE 1";
         $stmt = $this->dbAdapter->query($sql);
         $rowSet = $stmt->fetchAll();
@@ -78,7 +80,8 @@ class SessionMapper
      * @param int $id
      * @return boolean
      */
-    public function delete($id){
+    public function delete($id)
+    {
         $session = $this->find($id);
         $bool = FALSE;
         if ($session){
@@ -95,7 +98,8 @@ class SessionMapper
      * @param array $row
      * @return Session
      */
-    public function rowToObject($row){
+    public function rowToObject($row)
+    {
         $session = new Session();
         
         $session->setId($row['id'])
@@ -111,7 +115,8 @@ class SessionMapper
      * @param Session $session
      * @return array
      */
-    public function objectToRow(Session $session){
+    public function objectToRow(Session $session)
+    {
         $row = array();
         
         if ((int) $session->getId() !== 0){
@@ -124,5 +129,4 @@ class SessionMapper
         
         return $row;
     }
-    
 }
