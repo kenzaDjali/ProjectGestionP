@@ -67,17 +67,26 @@ class SessionService
     public function delete($id)
     {
         $session = $this->sessionMapper->find($id);
-        $result = $this->sessionMapper->delete($id);
-        if ($result) {
-            $data = array(
-                "code" => 1,
-                "message" => "La session '" . $session->getTitle() . "' a été supprimée !"
-            );
+        // si la session existe en BD
+        if ($session != false) {
+            $result = $this->sessionMapper->delete($id);
+            if ($result) {
+                $data = array(
+                    "code" => 1,
+                    "message" => "La session '" . $session->getTitle() . "' a été supprimée !"
+                );
+            } else {
+                $data = array(
+                    "code" => 2,
+                    "message" => "La session n'a pas pu être supprimée."
+                );
+            }
+        // si elle n'existe pas en BD
         } else {
             $data = array(
-                "code" => 2,
-                "message" => "La session n'a pas pu être supprimée."
-            );
+                "code" => 3,
+                "message" => "La session à supprimer n'a pas été trouvée."
+            );            
         }
         return $data;
     }

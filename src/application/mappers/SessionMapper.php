@@ -26,7 +26,9 @@ class SessionMapper
         $req = $stmt->execute();
         $row = $stmt->fetch();
         
-        if (!$row)return FALSE;
+        if (!$row) {
+            return false;
+        }
          
         return $this->rowToObject($row);        
     }
@@ -41,11 +43,11 @@ class SessionMapper
         $rowSet = $stmt->fetchAll();
         
         if ($rowSet == array()) {
-            return FALSE;
+            return false;
         }
          
         $sessions = array();
-        foreach($rowSet as $row){
+        foreach($rowSet as $row) {
             $sessions[] = $this->rowToObject($row);
         }
         return $sessions;        
@@ -57,7 +59,7 @@ class SessionMapper
      */
     public function save(Session $session)
     {
-        if ((int)$session->getId() === 0){     
+        if ((int)$session->getId() === 0) {     
             // insertion      
             $sql = "INSERT INTO sessions VALUES (null, :title, 
                 :slug, :start_date, :end_date)";
@@ -83,8 +85,8 @@ class SessionMapper
     public function delete($id)
     {
         $session = $this->find($id);
-        $bool = FALSE;
-        if ($session){
+        $bool = false;
+        if ($session) {
             $sql = "DELETE FROM sessions WHERE id = :id;";
             $stmt = $this->dbAdapter->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -119,7 +121,7 @@ class SessionMapper
     {
         $row = array();
         
-        if ((int) $session->getId() !== 0){
+        if ((int) $session->getId() !== 0) {
             $row['id'] = $session->getId();
         }
         $row['title'] = $session->getTitle();
