@@ -1,91 +1,91 @@
 <?php
-$title = "Création de session";
-$action = 'create';
-if (isset($_GET['id']) || (! empty($_POST) && ($_POST['action'] == 'update'))) {
-    $title = "Modification de session";
-    $action = 'update';
-}
-
-ob_start();
+    $title = "Création de session";
+    $action = 'create';
+    if (isset($_GET['id']) || (! empty($_POST) && ($_POST['action'] == 'update'))) {
+        $title = "Modification de session";
+        $action = 'update';
+    }
+    
+    ob_start();
 ?>
-<!-- pour l'admin -->
-<link href="css/pages/admin.css" rel="stylesheet">
+        <!-- pour l'admin -->
+        <link href="css/pages/admin.css" rel="stylesheet">
 <?php
-$endHeader = ob_get_clean();
-
-if (isset($_GET['id']) || isset($_POST['submit'])) {
+    $endHeader = ob_get_clean();
     
-    require_once (APPLICATION_PATH . '/services/SessionService.php');
-    require_once (APPLICATION_PATH . '/mappers/SessionMapper.php');
-    require_once (APPLICATION_PATH . '/Db.php');
-    $db = new Db('mysql', 'localhost', 'project', 'project', '0000');
-    $db->getConnexion();
-    $sessionMapper = new SessionMapper($db);
-    $sessionService = new SessionService($sessionMapper);
-}
-
-if (isset($_GET['id'])) {
-    
-    $id = (int) $_GET['id'];
-    $session = $sessionService->find($id);
-    
-    // si la session définit par l'id existe et qu'on n'est pas en POST
-    if (! isset($_POST['submit']) && ! empty($session)) {
-        // on récupère les données de la session à mettre à jour
-        // dans $titleF, $slug, $startDay, $startMonth, $startYear et compagnie
-        /* @var $session Session */
-        $titleF = $session->getTitle();
-        $slug = $session->getSlug();
-        list ($startYear, $startMonth, $startDay) = explode('-', $session->getStartDate());
-        list ($endYear, $endMonth, $endDay) = explode('-', $session->getendDate());
-    } else {
-        // sinon, on ne garde pas l'id
-        unset($id);
-        header("Location: list_sessions?err=1");
+    if (isset($_GET['id']) || isset($_POST['submit'])) {
+        
+        require_once (APPLICATION_PATH . '/services/SessionService.php');
+        require_once (APPLICATION_PATH . '/mappers/SessionMapper.php');
+        require_once (APPLICATION_PATH . '/Db.php');
+        $db = new Db('mysql', 'localhost', 'project', 'project', '0000');
+        $db->getConnexion();
+        $sessionMapper = new SessionMapper($db);
+        $sessionService = new SessionService($sessionMapper);
     }
-}
-
-if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
     
-    $result = $sessionService->clean($_POST);
-    
-    // si les données du POST étaient correctes
-    if ($result[0] != false) {
-        // on les récupère, les sauvegarde en BDD
-        $cleanData = $result[1];
-        $sessionService->save($cleanData);
+    if (isset($_GET['id'])) {
         
-        // et on redirige vers la liste de sessions
-        header("Location: list_sessions");
-        // si les données du POST n'étaient pas toutes correctes
-    } else {
-        // on récupère les erreurs
-        $errors = $result[1];
-        $data = $result[2]; // (parmi les données du POST, celles correctes)
-                            
-        // et les données qui étaient correctes dans $id, $titleF, $slug, $startDate et $endDate
-                            // ou bien celles du POST
-        isset($data['id']) ? $id = $data['id'] : $id = $_POST['id'];
-        isset($data['title']) ? $titleF = $data['title'] : $titleF = $_POST['title'];
-        isset($data['slug']) ? $slug = $data['slug'] : $slug = $_POST['slug'];
+        $id = (int) $_GET['id'];
+        $session = $sessionService->find($id);
         
-        if (isset($data['startDate'])) {
-            list ($startYear, $startMonth, $startDay) = explode('-', $data['startDate']);
+        // si la session définit par l'id existe et qu'on n'est pas en POST
+        if (! isset($_POST['submit']) && ! empty($session)) {
+            // on récupère les données de la session à mettre à jour
+            // dans $titleF, $slug, $startDay, $startMonth, $startYear et compagnie
+            /* @var $session Session */
+            $titleF = $session->getTitle();
+            $slug = $session->getSlug();
+            list ($startYear, $startMonth, $startDay) = explode('-', $session->getStartDate());
+            list ($endYear, $endMonth, $endDay) = explode('-', $session->getendDate());
         } else {
-            $startDay = $_POST['startDay'];
-            $startMonth = $_POST['startMonth'];
-            $startYear = $_POST['startYear'];
-        }
-        
-        if (isset($data['endDate'])) {
-            list ($endYear, $endMonth, $endDay) = explode('-', $data['endDate']);
-        } else {
-            $endDay = $_POST['endDay'];
-            $endMonth = $_POST['endMonth'];
-            $endYear = $_POST['endYear'];
+            // sinon, on ne garde pas l'id
+            unset($id);
+            header("Location: list_sessions?err=1");
         }
     }
-}
+    
+    if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
+        
+        $result = $sessionService->clean($_POST);
+        
+        // si les données du POST étaient correctes
+        if ($result[0] != false) {
+            // on les récupère, les sauvegarde en BDD
+            $cleanData = $result[1];
+            $sessionService->save($cleanData);
+            
+            // et on redirige vers la liste de sessions
+            header("Location: list_sessions");
+            // si les données du POST n'étaient pas toutes correctes
+        } else {
+            // on récupère les erreurs
+            $errors = $result[1];
+            $data = $result[2]; // (parmi les données du POST, celles correctes)
+                                
+            // et les données qui étaient correctes dans $id, $titleF, $slug, $startDate et $endDate
+                                // ou bien celles du POST
+            isset($data['id']) ? $id = $data['id'] : $id = $_POST['id'];
+            isset($data['title']) ? $titleF = $data['title'] : $titleF = $_POST['title'];
+            isset($data['slug']) ? $slug = $data['slug'] : $slug = $_POST['slug'];
+            
+            if (isset($data['startDate'])) {
+                list ($startYear, $startMonth, $startDay) = explode('-', $data['startDate']);
+            } else {
+                $startDay = $_POST['startDay'];
+                $startMonth = $_POST['startMonth'];
+                $startYear = $_POST['startYear'];
+            }
+            
+            if (isset($data['endDate'])) {
+                list ($endYear, $endMonth, $endDay) = explode('-', $data['endDate']);
+            } else {
+                $endDay = $_POST['endDay'];
+                $endMonth = $_POST['endMonth'];
+                $endYear = $_POST['endYear'];
+            }
+        }
+    }
 ?>
 
 <div class="container">
@@ -245,13 +245,13 @@ if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
 				</div>
 				
 <?php
-if ($action == 'create') {
-    $submit = 'Enregistrer la session';
-    $reset = 'Réinitialiser';
-} else {
-    $submit = 'Modifier la session';
-    $reset = 'Annuler';
-}
+    if ($action == 'create') {
+        $submit = 'Enregistrer la session';
+        $reset = 'Réinitialiser';
+    } else {
+        $submit = 'Modifier la session';
+        $reset = 'Annuler';
+    }
 ?>				
 				<!-- Boutons -->
 				<div class="control-group double">
@@ -271,5 +271,4 @@ if ($action == 'create') {
 			</fieldset>
 		</form>
 	</div>
-
 </div>
