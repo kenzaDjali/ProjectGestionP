@@ -1,6 +1,5 @@
 <?php
 
-
     defined('DS')
     || define('DS', DIRECTORY_SEPARATOR);
     defined('ROOT_PATH')
@@ -16,40 +15,90 @@
     defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));*/
     
-    // Par défaut, une page dispose du header et du footer 
-    $withHeader = true;
-    $withFooter = true;
+    // Tableau définissant les différents rôles utilisateurs de l'application
+    $roles = array(
+        '1' => 'Apprenant',
+        '2' => 'Formateur',
+        '3' => 'Secretaire',
+        '4' => 'Administrateur'
+    );
 
-if (! isset($_SESSION)) {  
-    session_start();
-}
-    //  si get est vide et isset $_session
-    if (empty($_GET) || ! isset($_SESSION)) {
-        if (isset($_SESSION['role_id'])) {
-            header('location:/welcome');
-        } else {
+    // Tableau définissant les pages accessibles suivant les rôles
+    $accesses = array(
+        '1' => array(       // apprenant
+            'welcome',
+            'form_profil',
+            'form_learner',
+            'logout'
+        ),
+        '2' => array(       // formateur
+            'welcome',        
+            'teacher',
+            'teacher_session',
+            'logout'
+        ),
+        '3' => array(       // secrétaire
+            'welcome',        
+            'secretary',
+            'logout'            
+        ),
+        '4' => array(       // administrateur
+            'welcome',        
+            'admin',
+            'form_add_session',
+            'list_sessions',
+            'form_add_user',
+            'session',
+            'user',
+            'ajax',            
+            'logout'            
+        )
+    );    
+    
+    if (!isset($_SESSION)) {  
+        session_start();
+    }
+    
+    // si le role de l'utilisateur n'est pas défini dans la session
+    if (!isset($_SESSION['role_id']) 
+        || !array_key_exists($_SESSION['role_id'], $roles)) {
+            unset($_SESSION['role_id']); // unset(null) possible ?
             $pathPage = '../pages/form_login.php';
-            $title = "Login";
-        }       
+            
+    // ou si l'url ne pointe sur aucune page, le rôle de l'utilisateur étant connu (et vérifié)
+    } elseif (empty($_GET)) {
+        header('Location: /welcome');
+        
+    // ou si l'utilisateur dont le rôle est connu demande une page en particulier
     } else {
         $page = $_GET['page'];
-        $pathPage = '../pages/' . $page . '.php';
-       $title = 'Pointeuse';
-        if (! file_exists($pathPage)) {
-            http_response_code(404); // le robot comprend qu'il y a une erreur
-            $pathPage = 'error.php';
-        } elseif ($page == 'ajax') {
-            $withHeader = false;
-            $withFooter = false;
+        $role = $_SESSION['role_id'];
+        $access = $accesses[$role];
+        // soit il n'a pas le droit d'accéder à cette page
+        if (!in_array($page, $access)) {
+            header('Location: /welcome');
+        // soit il a le droit
+        } else {
+            $pathPage = '../pages/' . $page . '.php';
+            //$title = 'Pointeuse';
+            // si la page demandée n'existe pas
+            if (! file_exists($pathPage)) {
+                http_response_code(404); // le robot comprend qu'il y a une erreur
+                $pathPage = 'error.php';
+            } 
         }
-        $active = "?page=" . $_GET['page'] . '.php';
     }
+    
+    // Par défaut, une page dispose du header et du footer
+    $withHeader = true;
+    $withFooter = true;    
     
     // Récupération du code php du corps de la page
     ob_start();
     require_once $pathPage;
     $buffer = ob_get_clean();
     
+    // Certaines pages ne doivent pas intégrer les header et footer par défaut
     if (($pathPage == "error.php") 
       OR ($pathPage == "../pages/form_login.php") 
       OR ($pathPage == "../pages/speed_login.php")
@@ -65,11 +114,6 @@ if (! isset($_SESSION)) {
     }
     
     echo $buffer;
-    
 
     $withFooter ? require_once '../layout/footer.php' : '';
     
-?>
-
-
-
