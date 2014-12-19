@@ -20,7 +20,7 @@
     $withHeader = true;
     $withFooter = true;
 
-if (! isset($_SESSION)) {
+if (! isset($_SESSION)) { 
     session_start();
 }
     //  si get est vide et isset $_session
