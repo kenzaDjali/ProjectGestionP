@@ -1,5 +1,6 @@
 <?php
 
+
     defined('DS')
     || define('DS', DIRECTORY_SEPARATOR);
     defined('ROOT_PATH')
@@ -18,18 +19,22 @@
     // Par défaut, une page dispose du header et du footer 
     $withHeader = true;
     $withFooter = true;
-    
-    if (! isset($_SESSION)) {
-        session_start();
-    }
+
+if (! isset($_SESSION)) {
+    session_start();
+}
     //  si get est vide et isset $_session
     if (empty($_GET) || ! isset($_SESSION)) {
-        $pathPage = '../pages/form_login.php';
-        $title = "Login";
+        if (isset($_SESSION['role_id'])) {
+            header('location:/welcome');
+        } else {
+            $pathPage = '../pages/form_login.php';
+            $title = "Login";
+        }       
     } else {
         $page = $_GET['page'];
         $pathPage = '../pages/' . $page . '.php';
-        $title = ucfirst($page);
+       $title = 'Pointeuse';
         if (! file_exists($pathPage)) {
             http_response_code(404); // le robot comprend qu'il y a une erreur
             $pathPage = 'error.php';
@@ -61,8 +66,10 @@
     
     echo $buffer;
     
+
     $withFooter ? require_once '../layout/footer.php' : '';
     
 ?>
+
 
 

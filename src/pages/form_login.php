@@ -16,7 +16,7 @@ require_once '../functions/login.php';
 			<div class="col-md-4 col-md-offset-7">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<span class="glyphicon glyphicon-lock"></span> Login
+						<span class="glyphicon glyphicon-lock"></span> Connexion
 					</div>
 					<div class="panel-body">
 						<form class="form-horizontal" role="form" method="post" action="">
@@ -38,22 +38,22 @@ require_once '../functions/login.php';
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<div class="checkbox">
-										<label> <input type="checkbox" /> Remember me
+										<label> <input type="checkbox" /> Garder ma session active 
 										</label>
 									</div>
 								</div>
 							</div>
 							<div class="form-group last">
 								<div class="col-sm-offset-3 col-sm-9">
-									<button type="submit" class="btn btn-success btn-sm"
-										name="submit">Sign in</button>
-									<button type="reset" class="btn btn-default btn-sm">Reset</button>
+									<button type="submit" class="btn btn-primary btn-sm"
+										name="submit">Se connecter</button>
+									<button type="reset" class="btn btn-default btn-sm">Réintialiser</button>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="panel-footer">
-						Connexion rapide <a href="speed_login">Connexion rapide</a>
+						Connexion rapide? <a href="speed_login">Connexion rapide ici</a>
 					</div>
 				</div>
 			</div>

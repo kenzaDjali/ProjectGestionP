@@ -19,13 +19,17 @@ $("#email").keyup(function() {
 // on form submit remove .ready and add .loading to the form
 $("#cuboid form").submit(function() {
 	$(this).removeClass("ready").addClass("loading");
-	// finish loading in 3s
-	setTimeout(complete, 3000);
-	// prevent default form submisson
+	$.post('quickLogin.php', $('#form1').serialize())
+	.done(function(retour) {
+		$("#cuboid form").removeClass("loading").addClass("complete");
+		var obj = 'window.location.replace("'+retour+'");'; 
+		setTimeout(obj,3000); 
+	});
+	
 	return false;
 })
 function complete() {
-	$("#cuboid form").removeClass("loading").addClass("complete");
+	
 }
 // reset/refresh functionality
 $(".reset-icon").click(function() {

@@ -12,14 +12,15 @@
         <script src="js/base.js"></script>
         
         <!-- DataTables -->
+
         <script type="text/javascript"  src="assets/datatables/media/js/jquery.dataTables.js"></script>
 
-        <script type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>        
-        
-        <?php if (isset($endFooter)) {
+      
+        <?php if (isset($endFooter)){
             echo $endFooter;
         }?>
-         
+      
+
         <script>     
         
                 var lineChartData = {
@@ -61,84 +62,76 @@
         			]
         
                 }    
-        
                 $(document).ready(function() {
-                var date = new Date();
-                var d = date.getDate();
-                var m = date.getMonth();
-                var y = date.getFullYear();
-                var calendar = $('#calendar').fullCalendar({
-                  header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                  },
-                  selectable: true,
-                  selectHelper: true,
-                  select: function(start, end, allDay) {
-                    var title = prompt('Event Title:');
-                    if (title) {
-                      calendar.fullCalendar('renderEvent',
-                        {
-                          title: title,
-                          start: start,
-                          end: end,
-                          allDay: allDay
-                        },
-                        true // make the event "stick"
-                      );
-                    }
-                    calendar.fullCalendar('unselect');
-                  },
-                  editable: true,
-                  events: [
-                    {
-                      title: 'All Day Event',
-                      start: new Date(y, m, 1)
-                    },
-                    {
-                      title: 'Long Event',
-                      start: new Date(y, m, d+5),
-                      end: new Date(y, m, d+7)
-                    },
-                    {
-                      id: 999,
-                      title: 'Repeating Event',
-                      start: new Date(y, m, d-3, 16, 0),
-                      allDay: false
-                    },
-                    {
-                      id: 999,
-                      title: 'Repeating Event',
-                      start: new Date(y, m, d+4, 16, 0),
-                      allDay: false
-                    },
-                    {
-                      title: 'Meeting',
-                      start: new Date(y, m, d, 10, 30),
-                      allDay: false
-                    },
-                    {
-                      title: 'Lunch',
-                      start: new Date(y, m, d, 12, 0),
-                      end: new Date(y, m, d, 14, 0),
-                      allDay: false
-                    },
-                    {
-                      title: 'Birthday Party',
-                      start: new Date(y, m, d+1, 19, 0),
-                      end: new Date(y, m, d+1, 22, 30),
-                      allDay: false
-                    },
-                    {
-                      title: 'EGrappler.com',
-                      start: new Date(y, m, 28),
-                      end: new Date(y, m, 29),
-                      url: 'http://EGrappler.com/'
-                    }
-                  ]
-                });
-              });
+            		
+            		$('#calendar').fullCalendar({
+            			header: {
+            				left: 'prev,next today',
+            				center: 'title',
+            				right: 'month,basicWeek,basicDay'
+            			},
+            			defaultDate: '2014-12-12',
+            			editable: true,
+            			eventLimit: true, // allow "more" link when too many events
+            			events: [
+            				{
+            					title: 'All Day Event',
+            					start: '2014-12-01'
+            				},
+            				{
+            					title: 'Long Event',
+            					start: '2014-12-07',
+            					end: '2014-12-10'
+            				},
+            				{
+            					id: 999,
+            					title: 'Repeating Event',
+            					start: '2014-12-09T16:00:00'
+            				},
+            				{
+            					id: 999,
+            					title: 'Repeating Event',
+            					start: '2014-12-16T16:00:00'
+            				},
+            				{
+            					title: 'Conference',
+            					start: '2014-12-11',
+            					end: '2014-12-13'
+            				},
+            				{
+            					title: 'Meeting',
+            					start: '2014-12-12T10:30:00',
+            					end: '2014-12-12T12:30:00'
+            				},
+            				{
+            					title: 'Lunch',
+            					start: '2014-12-12T12:00:00'
+            				},
+            				{
+            					title: 'Meeting',
+            					start: '2014-12-12T14:30:00'
+            				},
+            				{
+            					title: 'Happy Hour',
+            					start: '2014-12-12T17:30:00'
+            				},
+            				{
+            					title: 'Dinner',
+            					start: '2014-12-12T20:00:00'
+            				},
+            				{
+            					title: 'Birthday Party',
+            					start: '2014-12-13T07:00:00'
+            				},
+            				{
+            					title: 'Click for Google',
+            					url: 'http://google.com/',
+            					start: '2014-12-28'
+            				}
+            			]
+            		});
+            		
+            	});
         </script><!-- /Calendar -->
     </body>
 </html>

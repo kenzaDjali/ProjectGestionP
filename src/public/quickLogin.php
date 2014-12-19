@@ -1,5 +1,5 @@
 <?php
-
+require_once '../db/user.php';
 require_once '../application/mappers/UserMapper.php';
 require_once '../application/services/UserService.php';
 require_once '../application/Db.php';
@@ -12,19 +12,20 @@ $roles = array(
 );
 
 
-if (isset($_POST['submit']) && ! empty($_POST)) {
-     
+if (!empty($_POST) && isset($_POST['code'])) {
+    
     $db=new Db('mysql','localhost','project','project','0000');
     $userMapper=new UserMapper($db);//composition
     $userService = new UserService($userMapper);
     
-    $user =$userService->login($_POST['email'], $_POST['password'], $_POST['code']);
-    if (! empty($user)) {
+    $user =$userService->login(null, null, $_POST['code']);
+  
+    if (!empty($user)) {
         if (key_exists($user[0]['role'], $roles)) {
             session_start();
             $_SESSION['role_id'] = $user[0]['role'];
-            $page = '/welcome';
-            header('Location:' . $page);
+            echo $page = '/welcome';
+            
         }
     }
     
