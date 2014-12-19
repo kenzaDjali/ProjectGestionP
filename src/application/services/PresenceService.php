@@ -1,84 +1,107 @@
 <?php
 
-require_once APPLICATION_PATH . '/mappers/SessionMapper.php';
+require_once APPLICATION_PATH . '/mappers/PresenceMapper.php';
 
-class SessionService
+class PresenceService
 {
     /**
-     * @var SessionMapper
+     * @var PresenceMapper
      */
-    private $sessionMapper;
+    private $presenceMapper;
     
-    public function __construct(SessionMapper $sessionMapper){
-        $this->sessionMapper = $sessionMapper;
+    public function __construct(PresenceMapper $presenceMapper)
+    {
+        $this->presenceMapper = $presenceMapper;
     }
     
-    public function find($id){
-        $session = $this->sessionMapper->find($id);
-        return $session;
-        
+    public function find($id)
+    {
+        $presence = $this->presenceMapper->find($id);
+        return $presence;
 /*        
         $result = array(
-            'id' => $session->getId(),
-            'title' => $session->getTitle(),
-            'slug' => $session->getSlug(),
-            'startDate' => $session->getStartDate(),
-            'endDate' => $session->getEndDate(),
+            'id' => $presence->getId(),
+            'date_time' => $presence->getDateTime(),
+            'state' => $presence->getState(),
+            'id_student' => $presence->getIdStudent(),
+            'id_teacher' => $presence->getIdTeacher(),
         );
         return json_encode($result);
 */        
     }
     
+    public function findByIdStudent($idStudent)
+    {
+        $presences = $this->presenceMapper->findByIdStudent($idStudent);
+        return $presences;
+    }
+    
+    public function findByIdStudentAndDateTime($idStudent, $dateTime)
+    {
+        $presences = $this->presenceMapper->findByIdStudentAndDateTime($idStudent, $dateTime);
+        return $presences;
+    }
+    
+    
     public function fetchAll(){
-        $sessions = $this->sessionMapper->fetchAll();
-        //return $sessions;
-        
-        $response = array('data' => array());
-        foreach($sessions as $session){
+        $presences = $this->presenceMapper->fetchAll();
+        return $presences;
+/*        
+        $presence = array('data' => array());
+        foreach($presences as $presence){
             $response['data'][] = array( 
-                $line[] = $session->getId(),
-                $line[] = $session->getTitle(),
-                $line[] = $session->getSlug(),
-                $line[] = $session->getStartDate(),
-                $line[] = $session->getEndDate(),
-                $line[] = '<a class="btn btn-primary" href="form_add_session?id=' . $session->getId() . '">Editer</a>'
-                          . '<button class="btn btn-danger" id="' . $session->getId() . '">Supprimer</button>'                         
+                $line[] = $presence->getId(),
+                $line[] = $presence->getDateTime(),
+                $line[] = $presence->getState(),
+                $line[] = $presence->getIdStudent(),
+                $line[] = $presence->getIdTeacher(),
+                $line[] = '<a class="btn btn-primary" href="form_add_?id=' . $presence->getId() . '">Editer</a>'
+                          . '<button class="btn btn-danger" id="' . $presence->getId() . '">Supprimer</button>'                         
             );
         }
         return json_encode($response);
-        
+*/        
     }
     
     public function save($data){
-        $session = new Session();
+        $presence = new Presence();
         if (isset($data['id']) && !empty($data['id'])){
-            $session->setId($data['id']);
+            $presence->setId($data['id']);
         }
-        $session->setTitle($data['title'])
-                ->setSlug($data['slug'])
-                ->setStartDate($data['startDate'])
-                ->setEndDate($data['endDate']);
+        $presence->setDateTime($data['title'])
+                ->setState($data['state'])
+                ->setIdStudent($data['id_student'])
+                ->setIdTeacher($data['id_teacher']);
         
-        return $this->sessionMapper->save($session);
+        return $this->presenceMapper->save($presence);
     }
     
-    public function delete($id){
-        $session = $this->sessionMapper->find($id);
-        $result = $this->sessionMapper->delete($id);
-        if ($result) {
-            $data = array(
-                "code" => 1,
-                "message" => "La session '" . $session->getTitle() . "' a été supprimée !"
-            );
+    public function delete($id){ // à adapter au fur et à mesure !!
+        $presence = $this->presenceMapper->find($id);
+        // si l'état (présence / absence / retard) existe en BD
+        if ($presence != false) {
+            $result = $this->presenceMapper->delete($id);
+            if ($result) {
+                $data = array(
+                    "code" => 1,
+                    "message" => "La présence/absence/retard de '" . $presence->getIdStudent() . "' a été supprimé !"
+                );
+            } else {
+                $data = array(
+                    "code" => 2,
+                    "message" => "L'état de " . $presence->getIdStudent() . " n'a pas pu être supprimé."
+                );
+            }
+        // si cet enregistrement n'existe pas en BD
         } else {
             $data = array(
-                "code" => 2,
-                "message" => "La session n'a pas pu être supprimée."
-            );
+                "code" => 3,
+                "message" => "L'état de " . $presence->getIdStudent() . " à supprimer n'a pas été trouvé."
+            );            
         }
         return $data;
     }
-    
+/*    
     public function clean($data){
         $cleanData = array();
         $errors = array();
@@ -213,6 +236,6 @@ class SessionService
         } else {
             return array(false, 'La date de fin de session est antérieure à la date de début.');
         }
-    }
-    
+    }    
+*/    
 }

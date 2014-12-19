@@ -23,7 +23,7 @@ class Presence
     private $id_student;
     
     /**
-     * @var string
+     * @var int
      */
     private $id_teacher;
     
@@ -111,7 +111,4 @@ class Presence
         $this->id_teacher = $idTeacher;
         return $this;        
     }
-
-    
-    
 }
