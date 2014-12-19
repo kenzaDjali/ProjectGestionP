@@ -1,18 +1,20 @@
 <?php
-if (isset($_SESSION)) {
-    if (! isset($_SESSION['role_id'])) {
-        header('location:/');
+    $title = "Création d'un utilisateur";
+
+    if (isset($_SESSION)) {
+        if (! isset($_SESSION['role_id'])) {
+            header('location:/');
+        }
     }
-}
-// TODO: Changer le type de téléphone,
-// TODO: Tester que la selection n'a pas dépsser 1->4
-require_once '../functions/user.php';
-ob_start();
+    // TODO: Changer le type de téléphone,
+    // TODO: Tester que la selection n'a pas dépsser 1->4
+    require_once '../functions/user.php';
+    ob_start();
 ?>
-<!-- pour l'admin -->
-<link href="css/pages/admin.css" rel="stylesheet">
+        <!-- pour l'admin -->
+        <link href="css/pages/admin.css" rel="stylesheet">
 <?php
-$endHeader = ob_get_clean();
+    $endHeader = ob_get_clean();
 ?>
 
 
@@ -105,13 +107,7 @@ $endHeader = ob_get_clean();
 				</div>
 			</div>
 
-
 		</fieldset>
 	</form>
-
-
 </div>
 <!-- /container -->
-
-
-
