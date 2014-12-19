@@ -1,5 +1,6 @@
 <?php
-require_once '../functions/login.php';
+    require_once '../functions/login.php';
+    $title = "Login";
 ?>
 <!DOCTYPE html>
 <html>
