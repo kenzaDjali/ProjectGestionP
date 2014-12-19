@@ -28,19 +28,10 @@
                 echo $objectService->fetchAll();
                 break;
             case 'delete':
-                if (isset($_GET['id'])) {
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $id = (int) $_GET['id'];
-                    $object = $objectService->find($id);
-                    if ($object) {
-                        $result = $objectService->delete($id);
-                        echo json_encode($result, JSON_UNESCAPED_UNICODE);  
-                    } else {
-                        $data = array(
-                            "code" => 3,
-                            "message" => "La session à supprimer n'a pas été trouvée."
-                        );
-                        echo json_encode($data, JSON_UNESCAPED_UNICODE);
-                    }
+                    $result = $objectService->delete($id);
+                    echo json_encode($result, JSON_UNESCAPED_UNICODE);  
                 } else {
                     $data = array(
                         "code" => 3,
@@ -48,10 +39,9 @@
                     );
                     echo json_encode($data, JSON_UNESCAPED_UNICODE);
                 }
-                
+                break;
             default :
+                break;
         }
     }
     //}
-    
-    
