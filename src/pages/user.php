@@ -1,11 +1,10 @@
 <?php
-require_once '../functions/user.php';
+    require_once '../functions/user.php';
 
-$endHeader = "<link href='//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css'  rel='stylesheet'>";
-$endFooter = "<script>$(document).ready(function(){ $('#myTableUser').DataTable();}); </script>";
-
- 
+    $endHeader = "<link href='//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css'  rel='stylesheet'>";
+    $endFooter = "<script>$(document).ready(function(){ $('#myTableUser').DataTable();}); </script>";
 ?>
+
 <div class= "container" style="background-color:#FFF">
    <hr/>
    <h2>Liste utilisateurs</h2>
@@ -27,7 +26,7 @@ $endFooter = "<script>$(document).ready(function(){ $('#myTableUser').DataTable(
             <td><?= $user->getFirst_name()?></td>
             <td><?= $user->getCell_phone_number()?></td>
             <td><?= $user->getEmail()?></td>
-            <td><?= getNameRole($user->getRole())?></td>
+            <td><?= getNameRole($user->getRole(), $roles)?></td>
         </tr>
      <?php }?>
     </tbody>
