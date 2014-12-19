@@ -6,22 +6,27 @@ class Session
      * @var int
      */
     private $id;
+    
     /**
      * @var string
      */
     private $title;
+    
     /**
      * @var string
      */
     private $slug;
+    
     /**
      * @var string
      */
     private $start_date;
+    
     /**
      * @var string
      */
     private $end_date;
+    
 	/**
      * @return the $id
      */
@@ -92,18 +97,18 @@ class Session
 	/**
      * @param string $start_date
      */
-    public function setStartDate($start_date)
+    public function setStartDate($startDate)
     {
-        $this->start_date = $start_date;
+        $this->start_date = $startDate;
         return $this;
     }
 
 	/**
      * @param string $end_date
      */
-    public function setEndDate($end_date)
+    public function setEndDate($endDate)
     {
-        $this->end_date = $end_date;
+        $this->end_date = $endDate;
         return $this;        
     }
 
