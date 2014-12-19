@@ -1,11 +1,6 @@
 <?php
-
-$afterScript = '
-    <script>
     
-    
-    </script>
-   ';
+    $title = "Bienvenue";    
 
 ?>
 <div class ="container">
@@ -245,5 +240,3 @@ $afterScript = '
     <!-- /#wrapper -->
  </div>
  <!-- /#container -->
-
-
