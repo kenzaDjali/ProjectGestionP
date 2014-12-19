@@ -1,35 +1,63 @@
 <?php
-require_once '../functions/user.php';
-
-$endHeader = "<link href='//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css'  rel='stylesheet'>";
-$endFooter = "<script>$(document).ready(function(){ $('#myTableUser').DataTable();}); </script>";
-
- 
+    $title = "Liste des sessions";
+    
+    ob_start();
 ?>
-<div class= "container" style="background-color:#FFF">
-   <hr/>
-   <h2>Liste utilisateurs</h2>
-   <hr/>
-    <table id ="myTableUser" class = "display">
-     <thead>
-        <tr>
-            <th>Nom </th>
-            <th>Prénom</th>
-            <th>N° télephone</th>
-            <th>E-mail</th>
-            <th>Role</th>
-        </tr>
-    </thead>
-    <tbody>
-     <?php foreach($users as $user) {?>
-        <tr>
-            <td><?= $user->getLast_name()?></td>
-            <td><?= $user->getFirst_name()?></td>
-            <td><?= $user->getCell_phone_number()?></td>
-            <td><?= $user->getEmail()?></td>
-            <td><?= getNameRole($user->getRole())?></td>
-        </tr>
-     <?php }?>
-    </tbody>
-    </table>
-</div>   
+        <!-- pour l'admin -->
+        <link href="assets/datatables/media/css/jquery.dataTables.min.css"
+        	rel="stylesheet">
+<?php
+    $endHeader = ob_get_clean();
+?>
+
+        <div class="container">
+        	<div class="contenu">
+        		<hr>
+        		<h2>Liste des sessions</h2><br><br>
+        		
+        		<div><a class="btn btn-success" href="form_add_session">Créer une nouvelle session</a></div><br>
+        		<div id="errors">
+<?php 
+    if (isset($_GET['err'])){
+        if ((int)$_GET['err'] === 1){
+            echo "L'identifiant de session choisi n'est pas valide.";
+        }
+    }
+?>
+        		</div><br><br>
+        		<table id="myTableSessions" class="display">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+        				    <th>Titre</th>
+        					<th>Slug</th>
+        					<th>Date de début</th>
+        					<th>Date de fin</th>
+        					<th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+        				    <th>Titre</th>
+        					<th>Slug</th>
+        					<th>Date de début</th>
+        					<th>Date de fin</th>
+        					<th>Actions</th>        					
+                        </tr>
+                    </tfoot>                    
+                </table>
+            </div>
+        </div>
+
+
+<?php
+    ob_start();
+?>
+        <script type="text/javascript"
+	       src="assets/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/pages/list_sessions.js"></script>
+
+<?php 
+    $endFooter = ob_get_clean();
+?>
