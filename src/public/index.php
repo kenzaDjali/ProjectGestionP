@@ -2,7 +2,7 @@
 
     defined('DS')
     || define('DS', DIRECTORY_SEPARATOR);
-    defined('ROOT_PATH')
+    defined('ROOT_PATH')	// répertoire projet (pointeuse) qui contient src et co
     || define('ROOT_PATH', dirname(dirname(__DIR__)));
     defined('SRC_PATH')
     || define('SRC_PATH', ROOT_PATH . DS . 'src');
@@ -58,7 +58,7 @@
     if (!isset($_SESSION)) {  
         session_start();
     }
-    
+    //echo "on est passé là !!";exit(0);
     // si le role de l'utilisateur n'est pas défini dans la session
     if (!isset($_SESSION['role_id']) 
         || !array_key_exists($_SESSION['role_id'], $roles)) {
@@ -67,16 +67,16 @@
             
     // ou si l'url ne pointe sur aucune page, le rôle de l'utilisateur étant connu (et vérifié)
     } elseif (empty($_GET)) {
-        header('Location: /welcome');
+        header('Location: ./welcome');
         
     // ou si l'utilisateur dont le rôle est connu demande une page en particulier
     } else {
         $page = $_GET['page'];
         $role = $_SESSION['role_id'];
         $access = $accesses[$role];
-        // soit il n'a pas le droit d'accéder à cette page
+        // soit il n'a pas le droit d'accéder à cette page ou la page en question n'existe pas ??!!
         if (!in_array($page, $access)) {
-            header('Location: /welcome');
+            header('Location: ./welcome');
         // soit il a le droit
         } else {
             $pathPage = '../pages/' . $page . '.php';
