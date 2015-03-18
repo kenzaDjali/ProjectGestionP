@@ -2,7 +2,7 @@
 
     if (isset($_SESSION)) {
         if (!isset($_SESSION['role_id'])) {
-            header('Location: /form_login');
+            header('Location: ./form_login');
         }
     }
 

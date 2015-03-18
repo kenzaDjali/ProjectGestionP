@@ -41,7 +41,7 @@
         } else {
             // sinon, on ne garde pas l'id
             unset($id);
-            header("Location: list_sessions?err=1");
+            header("Location: ./list_sessions?err=1");
         }
     }
     
@@ -56,7 +56,7 @@
             $sessionService->save($cleanData);
             
             // et on redirige vers la liste de sessions
-            header("Location: list_sessions");
+            header("Location: ./list_sessions");
             // si les données du POST n'étaient pas toutes correctes
         } else {
             // on récupère les erreurs

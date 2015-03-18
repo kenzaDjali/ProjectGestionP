@@ -3,7 +3,7 @@
 
     if (isset($_SESSION)) {
         if (! isset($_SESSION['role_id'])) {
-            header('location:/');
+            header('location:./');
         }
     }
     // TODO: Changer le type de téléphone,

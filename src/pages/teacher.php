@@ -34,7 +34,7 @@
                     </form>
                 </div><br><br>
                 <div id="redo">
-                    <a href="/teacher_session" class="btn btn-primary">Redéfinir le groupe d'apprenants</a>
+                    <a href="./teacher_session" class="btn btn-primary">Redéfinir le groupe d'apprenants</a>
                 </div>
             </div>
         </div>
