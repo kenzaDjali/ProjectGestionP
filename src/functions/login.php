@@ -10,12 +10,13 @@
         $userMapper=new UserMapper($db);//composition
         $userService = new UserService($userMapper);
         
-        $user = $userService->login($_POST['email'], $_POST['password'], $_POST['code']);
+        //$user = $userService->login($_POST['email'], $_POST['password'], $_POST['code']);
+        $user = $userService->login($_POST['email'], $_POST['password']); // $_POST['code'] ?
         if (! empty($user)) {
             if (array_key_exists($user[0]['role'], $roles)) {
                 session_start();
                 $_SESSION['role_id'] = $user[0]['role'];
-                $page = '/welcome';
+                $page = './welcome';
                 header('Location: ' . $page);
             }
         }  
