@@ -1,6 +1,8 @@
 <?php
     require_once '../functions/user.php';
 
+    $title = "Liste des utilisateurs";
+    
     $endHeader = "<link href='//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css'  rel='stylesheet'>";
     $endFooter = "<script>$(document).ready(function(){ $('#myTableUser').DataTable();}); </script>";
 ?>
