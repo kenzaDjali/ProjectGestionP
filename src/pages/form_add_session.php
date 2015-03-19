@@ -1,6 +1,8 @@
 <?php
     $title = "Création de session";
     $action = 'create';
+    // s'il s'agit de mettre à jour une session - 2 cas :
+    // utilisateur juste arrivé sur la page ou après soumission du formulaire, mais données 'incorrectes'
     if (isset($_GET['id']) || (! empty($_POST) && ($_POST['action'] == 'update'))) {
         $title = "Modification de session";
         $action = 'update';
@@ -13,6 +15,8 @@
 <?php
     $endHeader = ob_get_clean();
     
+    // si l'utilisateur vient juste d'arriver sur la page pour mettre à jour une session
+    // ou si le formulaire vient d'être soumis
     if (isset($_GET['id']) || isset($_POST['submit'])) {
         
         require_once (APPLICATION_PATH . '/services/SessionService.php');
@@ -24,13 +28,15 @@
         $sessionService = new SessionService($sessionMapper);
     }
     
+    // si l'utilisateur arrive sur la page pour mettre à jour une session existante
     if (isset($_GET['id'])) {
         
         $id = (int) $_GET['id'];
         $session = $sessionService->find($id);
         
-        // si la session définit par l'id existe et qu'on n'est pas en POST
-        if (! isset($_POST['submit']) && ! empty($session)) {
+        // si la session définit par l'id existe et que le formulaire n'a pas encore été soumis
+        // A REVOIR : si $_GET['id'] existe, le formulaire ne peut pas avoir été soumis ??
+        if (! empty($session) && ! isset($_POST['submit'])) {
             // on récupère les données de la session à mettre à jour
             // dans $titleF, $slug, $startDay, $startMonth, $startYear et compagnie
             /* @var $session Session */
@@ -38,33 +44,37 @@
             $slug = $session->getSlug();
             list ($startYear, $startMonth, $startDay) = explode('-', $session->getStartDate());
             list ($endYear, $endMonth, $endDay) = explode('-', $session->getendDate());
+        // sinon : la session à modifier n'existe pas
         } else {
-            // sinon, on ne garde pas l'id
+            // sinon, on ne garde pas l'id et on retourne sur la page listant les sessions existantes
+            // A REVOIR : pq ne pas garder $id ? Détruit par changement de page, non ?
             unset($id);
             header("Location: ./list_sessions?err=1");
         }
     }
     
+    // si le formulaire a été soumis pour la création ou la mise à jour d'une session
     if (isset($_POST['submit']) && ($_POST['submit'] == 'register')) {
         
         $result = $sessionService->clean($_POST);
         
         // si les données du POST étaient correctes
         if ($result[0] != false) {
-            // on les récupère, les sauvegarde en BDD
+            // on les récupère et les sauvegarde en BDD
             $cleanData = $result[1];
             $sessionService->save($cleanData);
             
             // et on redirige vers la liste de sessions
             header("Location: ./list_sessions");
-            // si les données du POST n'étaient pas toutes correctes
+            
+        // sinon : les données du POST n'étaient pas toutes correctes
         } else {
             // on récupère les erreurs
             $errors = $result[1];
-            $data = $result[2]; // (parmi les données du POST, celles correctes)
                                 
-            // et les données qui étaient correctes dans $id, $titleF, $slug, $startDate et $endDate
-                                // ou bien celles du POST
+            // et les données correctes si elles le sont, sinon celles du POST,
+            // dans $id, $titleF, $slug, $startDate et $endDate
+            $data = $result[2];
             isset($data['id']) ? $id = $data['id'] : $id = $_POST['id'];
             isset($data['title']) ? $titleF = $data['title'] : $titleF = $_POST['title'];
             isset($data['slug']) ? $slug = $data['slug'] : $slug = $_POST['slug'];
@@ -272,3 +282,5 @@
 		</form>
 	</div>
 </div>
+
+<?php var_dump($_POST); ?>>

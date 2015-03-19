@@ -109,10 +109,9 @@ class SessionService
         $endMonth = $data['endMonth'];
         $endYear = $data['endYear'];
         
-        // nettoyage des données 
-        // et récupération soit de l'erreur rencontrée
-        // soit de la donnée nettoyée 
-        if (isset($id)){
+        // nettoyage des données et récupération : 
+        // soit de l'erreur rencontrée, soit de la donnée nettoyée 
+        if (isset($id)){	// A REVOIR : intérêt erreur pour $id, non récupérée côté html ??
             $result = $this->cleanId($id);
             if ($result[0] == false){
                 $errors['id'] = $result[1];
@@ -166,8 +165,11 @@ class SessionService
         }
     }
 
-    public function cleanId($id)
+    public function cleanId($id)	// A REVOIR : utilité ?
     {
+    	/*if (strlen($id) == 0){
+    		return array(false, 'L\'identifiant est vide.')
+    	}*/
         if (is_numeric($id) && ((int)$id != 0)){
             return array(true, (int)$id);
         } else {
@@ -179,8 +181,9 @@ class SessionService
     public function cleanTitle($title)
     {
         $title = trim($title);
-        
-        if (strlen($title) < 14){
+        if (strlen($title) == 0){
+        	return array(false, 'Aucun titre n\'a pas été saisi.');
+        } elseif (strlen($title) < 14){
             return array(false, 'Le titre doit comporter au moins 15 caractères.');
         }
         $pattern = '/^[0-9a-zA-Z- éèùçà]*$/';
@@ -194,6 +197,10 @@ class SessionService
     public function cleanSlug($slug)
     {
         $slug = trim($slug);
+
+        if (strlen($slug) == 0){
+        	return array(false, 'Aucun slug n\'a été saisi.');
+        }
         
         $slug = mb_strtolower($slug, 'UTF-8');
         
@@ -204,7 +211,8 @@ class SessionService
         $pattern = '/^([0-9a-zéèàùç]+[-]?)+$/';
         if (!preg_match($pattern, $slug)){
             return array(false, 'Le slug ne peut comporter que des caractères '
-                . 'alphanumériques et le tiret ; il ne doit pas comporter d\'espace.');
+                . 'alphanumériques et le tiret ; il ne doit comporter ni accents '
+            	. 'ni espaces.');
         }
         
         return array(true, $slug);
@@ -212,6 +220,25 @@ class SessionService
     
     public function cleanDate($day, $month, $year)
     {
+    	// Les champs sont-ils vides ?
+    	// On utilise le fait que, côté html, l'option '--' a la valeur '0'
+    	$errors = []; 
+    	if ($day == "0"){
+    		$errors[] = 'Le jour n\'a pas été saisi.';
+    	}
+    	if ($month == "0"){
+    		$errors[] = 'Le mois n\'a pas été saisi.';
+    	}
+    	if ($year == "0"){
+    		$errors[] = 'L\'année n\'a pas été saisie.';
+    	}
+    	
+    	if (count($errors) >= 1){
+    		$error = implode('<br>', $errors);
+    		return array(false, $error);
+    	}
+    	
+    	// la date est-elle valide ?
         if (is_numeric($day) && is_numeric($month) && is_numeric($year)){
             if (checkdate($month, $day, $year)){
                 $date = $year . '-' . $month . '-' . $day;

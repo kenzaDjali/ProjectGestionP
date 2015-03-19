@@ -51,7 +51,8 @@
             'session',
             'user',
             'ajax',            
-            'logout'            
+            'logout',
+        	'test'            
         )
     );    
     
