@@ -29,55 +29,55 @@ class Db
     /**
      * @var number
      */
-    private $port = 3306;
+	private $port = 3306;
     
-    static private $allowedDrivers = array('mysql');
+	static private $allowedDrivers = array('mysql');
     
-    public function __construct(
-    $driver, $host, $dbname, 
-    $username, $password, $port = 3306)
-    {
-        if(!in_array($driver, self::$allowedDrivers)) {
-            throw new InvalidArgumentException(
-                "$driver n'est pas un driver PDO valide"
-            );
+	public function __construct(
+    	$driver, 
+    	$host, 
+		$dbname,
+		$username, 
+		$password, 
+		$port = 3306
+	) {
+		if (!in_array($driver, self::$allowedDrivers)) {
+			throw new InvalidArgumentException("$driver n'est pas un driver PDO valide");
         }
         $this->driver = $driver; 
         if ($host != "localhost" && !filter_var($host, FILTER_VALIDATE_IP)) {
-            throw new InvalidArgumentException(
-                "$host n'est pas un nom d'hôte PDO valide"
-            );
+            throw new InvalidArgumentException("$host n'est pas un nom d'hôte PDO valide");
         }
         $this->host = $host;
         $this->dbname = $dbname;
         $this->username = $username;
         $this->password = $password;
-   }
+	}
    
-   private function connect()
-   {
-       $dsn = $this->driver . ':dbname=' . $this->dbname . ';' .
-              'host=' . $this->host;
-       try {
-        $this->connexion = new PDO($dsn, $this->username, $this->password);
-        $this->connexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-       } catch(PDOException $e) {
-           throw $e;
-       }
-   }
+	private function connect()
+	{
+		$dsn = $this->driver . ':dbname=' . $this->dbname . ';' 
+				. 'host=' . $this->host;
+		try {
+			$this->connexion = new PDO($dsn, $this->username, $this->password);
+			$this->connexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+		} catch(PDOException $e) {
+        	throw $e;
+		}
+	}
    
-   private function isConnected()
-   {
-       return (bool) ($this->connexion instanceof PDO);
-   }
+	private function isConnected()
+	{
+    	return (bool) ($this->connexion instanceof PDO);
+	}
    
-   //Lazy loading = chargement tardif
-   // pour ne pas surcharger la phase d'initialisation
-   public function getConnexion()
-   {
-       if (!$this->isConnected()) {
-           $this->connect();
-       }
-       return $this->connexion;
-   }
+	//Lazy loading = chargement tardif
+	// pour ne pas surcharger la phase d'initialisation
+	public function getConnexion()
+   	{
+		if (!$this->isConnected()) {
+			$this->connect();
+		}
+		return $this->connexion;
+	}
 }
